@@ -1,0 +1,1604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Kenny Chui — Design + Creative Direction. Portfolio of brand, packaging, and product design work." />
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kenny Chui — Design + Creative Direction" />
+    <meta property="og:description" content="Kenny Chui — Design + Creative Direction. Portfolio of brand, packaging, and product design work." />
+    <meta property="og:image" content="assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kenny Chui — Design + Creative Direction" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kenny Chui — Design + Creative Direction" />
+    <meta name="twitter:description" content="Kenny Chui — Design + Creative Direction. Portfolio of brand, packaging, and product design work." />
+    <meta name="twitter:image" content="assets/og-image.jpg" />
+    <title>Kenny Chui — Design + Creative Direction</title>
+    <style>
+      /* Proxima Nova — the original site's typeface, served there by
+         Squarespace's font system (Adobe Fonts). Declared here at the
+         two weights the page actually uses: 400 for everything, and
+         700 for the bold-italic date lines on About. */
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://fonts.cdnfonts.com/s/27118/Mark%20Simonson%20%20Proxima%20Nova%20Regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://fonts.cdnfonts.com/s/27118/Mark%20Simonson%20%20Proxima%20Nova%20Regular%20Italic.woff") format("woff");
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://fonts.cdnfonts.com/s/27118/Mark%20Simonson%20%20Proxima%20Nova%20Bold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://fonts.cdnfonts.com/s/27118/Mark%20Simonson%20%20Proxima%20Nova%20Bold%20Italic.woff") format("woff");
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+      }
+      :root {
+        --bg: #000000;
+        --ink: #f2f2f2;
+        --muted: #c2c2c2;
+        --faint: #a8a8a8;
+        --accent: #29abe2;
+        --line: #2b2b2b;
+        --field: #0d0d0d;
+        --field-line: #4a4a4a;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "proxima-nova", "Proxima Nova", "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+      a { color: inherit; }
+      :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+      /* ---------- header ---------- */
+      header {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 46px 36px 18px;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.96) 55%, rgba(0,0,0,0));
+      }
+      /* Icon nav: each item rests as an icon only — a thin-stroke
+         outline glyph in the same drawing style as the tile lock
+         icons — and its text label unfolds beside it on hover or
+         keyboard focus. On hover/focus the icon and its label turn
+         the site's accent blue, matching the tile, social, and
+         button hovers. Touch has no hover, so the icons carry the
+         meaning there; the current page is marked by a bright icon
+         and a small accent dot beneath it instead of the old
+         underline, since there is no text to underline. */
+      nav.main-nav { display: flex; gap: 24px; padding-top: 2px; }
+      nav.main-nav button {
+        appearance: none;
+        background: none;
+        border: 0;
+        padding: 4px 2px 10px;
+        font: inherit;
+        color: var(--muted);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        transition: color 250ms ease-in-out;
+      }
+      nav.main-nav button svg {
+        width: 19px; height: 19px;
+        display: block;
+        flex: none;
+      }
+      nav.main-nav .nav-label {
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        margin-left: 0;
+        transition: max-width 300ms ease-in-out, opacity 250ms ease-in-out, margin-left 300ms ease-in-out;
+      }
+      nav.main-nav button:hover, nav.main-nav button:focus-visible { color: var(--accent); }
+      nav.main-nav button:hover .nav-label,
+      nav.main-nav button:focus-visible .nav-label {
+        max-width: 64px;
+        opacity: 1;
+        margin-left: 8px;
+      }
+      nav.main-nav button[aria-current="page"] { color: var(--ink); }
+      nav.main-nav button[aria-current="page"]:hover,
+      nav.main-nav button[aria-current="page"]:focus-visible { color: var(--accent); }
+      nav.main-nav button[aria-current="page"]::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 4px; height: 4px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .identity { text-align: right; }
+      .identity .name {
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.38em;
+        color: var(--accent);
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .identity .tagline {
+        margin-top: 9px;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+      }
+
+      main { padding: 148px 36px 120px; }
+
+      /* ---------- work grid ---------- */
+      /* Tiles per row match helloox.com exactly. The original grid is
+         Squarespace "autocolumns" with a 300px minimum column width
+         (the site's projectCoverWidth tweak), zero gutter, behaviour
+         "min": the column count is floor(grid width / 300px), at least
+         1, and the tiles stretch to fill the row. So 4 across at a
+         1440px window, 5 at 1512px, 6 at 1920px, 2 at tablet width,
+         1 on a phone. auto-fill + minmax(300px, 1fr) with no gap
+         reproduces that count at every width. */
+      #view-work { margin: 0 -36px; }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .tile {
+        position: relative;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        /* The cover eases into its hover zoom on a long, soft
+           ease-out curve, matched to the blue overlay's fade below,
+           so the two move together. */
+        transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .tile img { position: relative; z-index: 1; }
+      /* Active-project hover: a transparent bright blue overlay —
+         rgba(0,204,255,.7) — fades in over the whole tile while the
+         cover image zooms to 1.05 inside it, clipped by the tile's
+         overflow, so the tile feels like it leans toward you. No text
+         inside the blue. The cover art shows through the translucent
+         fill. Both run on the same long, soft ease-out curve (the
+         image's 650ms transform above, a 500ms fade here) so the
+         blue settles in gently alongside the zoom instead of
+         snapping on at full speed the moment the pointer arrives. */
+      .tile .hover {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: rgba(0, 204, 255, 0.7);
+        opacity: 0;
+        transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+      }
+      .tile:focus-within .hover { opacity: 1; }
+      .tile:focus-within img { transform: scale(1.05); }
+      @media (hover: hover) and (pointer: fine) {
+        .tile:hover .hover, .tile:active .hover { opacity: 1; }
+        .tile:not(.is-locked):hover img { transform: scale(1.05); }
+      }
+      /* Press state: touch has no hover, so a tap gets its own
+         feedback — the whole tile dips to 0.97 fast (120ms) while
+         pressed, then springs back on release via the overshooting
+         curve on the base rule. Locked tiles keep their lock rattle
+         instead and stay inert, so the dip is for openable tiles
+         only. */
+      .tile:not(.is-locked) { transition: transform 340ms cubic-bezier(0.34, 1.45, 0.64, 1); }
+      .tile:not(.is-locked):active {
+        transform: scale(0.97);
+        transition: transform 120ms ease-out;
+      }
+      /* Locked tiles carry a lock icon instead of a "Locked" text label,
+         in the same slot the word used to sit (centred, low on the tile).
+         It is drawn like the fine outline icons on Muse's sidebar: a
+         thin white stroke, round caps and joins, no fill. */
+      .tile .lock-badge {
+        position: absolute;
+        left: 0; right: 0; bottom: 12%;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        color: rgba(255,255,255,0.92);
+        pointer-events: none;
+      }
+      .tile .lock-badge svg {
+        width: 20px; height: 20px;
+        display: block;
+        overflow: visible;
+      }
+      .tile .lock-badge .shackle {
+        transform-box: fill-box;
+        transform-origin: 100% 100%;
+      }
+      /* Micro animation, in the spirit of those sidebar icons: hovering
+         or pressing a locked tile rattles the lock once — the body tips
+         a few degrees side to side while the shackle lifts and tilts as
+         if tugged — then everything settles back. The tile itself stays
+         inert: no overlay, no link, no focus state. */
+      @media (hover: hover) and (pointer: fine) {
+        .tile.is-locked:hover .lock-badge svg { animation: lock-rattle 520ms ease-in-out; }
+        .tile.is-locked:hover .lock-badge .shackle { animation: shackle-tug 520ms ease-in-out; }
+      }
+      .tile.is-locked:active .lock-badge svg { animation: lock-rattle 520ms ease-in-out; }
+      .tile.is-locked:active .lock-badge .shackle { animation: shackle-tug 520ms ease-in-out; }
+      @keyframes lock-rattle {
+        0% { transform: rotate(0deg); }
+        22% { transform: rotate(-5deg); }
+        48% { transform: rotate(4deg); }
+        72% { transform: rotate(-2deg); }
+        100% { transform: rotate(0deg); }
+      }
+      @keyframes shackle-tug {
+        0% { transform: translateY(0) rotate(0deg); }
+        30% { transform: translateY(-1.4px) rotate(-14deg); }
+        55% { transform: translateY(-0.6px) rotate(-6deg); }
+        100% { transform: translateY(0) rotate(0deg); }
+      }
+      /* Locked tiles are inert: no hover overlay, focus, or navigation,
+         so all three behave identically. Only active (unlocked) projects
+         get the hover overlay above. */
+      .tile.is-locked { cursor: default; }
+      .tile a { display: block; width: 100%; height: 100%; position: relative; z-index: 1; cursor: pointer; }
+
+      /* ---------- shared-element transition ---------- */
+      /* Tapping a tile no longer cuts to the project page: a clone of
+         the tile's cover (the .shared-flyer, created by the script)
+         lifts off the grid and grows into the project page's hero
+         image while the rest of the project fades in underneath it,
+         then crossfades into the real hero where it lands. The flyer
+         is a fixed-position img animated between the tile's box and
+         the hero's box with object-fit: cover, so the artwork crops
+         continuously as the box morphs from the tile's square to the
+         hero's natural aspect — at the landing box the aspect matches
+         the hero exactly, so cover and the real image coincide and
+         the swap is invisible. The real counterpart (hero on the way
+         in, tile cover on the way back) is held invisible under the
+         flyer via .awaiting-flyer until the flyer fades out over it.
+         Returning via "Back to all work" runs the same flight in
+         reverse when both ends are on screen. Reduced-motion and any
+         failure along the way fall back to the plain view switch. */
+      .shared-flyer {
+        position: fixed;
+        z-index: 90;
+        display: block;
+        object-fit: cover;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        pointer-events: none;
+        will-change: left, top, width, height, opacity;
+      }
+      .awaiting-flyer { opacity: 0 !important; }
+      /* Logo-matched flight: when a project's tile cover and hero
+         are the same logo lockup at different sizes (see LOGO_BOXES
+         in the script), the flyer is a clipping window with the
+         cover image inside it on its own geometry, so the window
+         can morph tile -> hero while the image inside tracks the
+         logo from its box in the tile to its box in the hero. The
+         logo then arrives at the hero's logo position and size
+         instead of wherever a plain cover crop would leave it, and
+         the landing crossfade is a colour/background dissolve with
+         the logo standing still. The black background matches every
+         tile cover's own background, so any sliver of window the
+         tracking image does not cover reads as the tile itself. */
+      .shared-flyer--logo {
+        overflow: hidden;
+        background: #000;
+        object-fit: fill;
+      }
+      .shared-flyer--logo img {
+        position: absolute;
+        display: block;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        pointer-events: none;
+        will-change: left, top, width, height;
+      }
+
+      /* ---------- project detail ---------- */
+      .project {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 56px;
+        max-width: 1440px;
+        margin: 26px auto 0;
+      }
+      .project .side { position: sticky; top: 170px; align-self: start; }
+      .project h1 { font-size: 19px; font-weight: 400; margin: 34px 0 16px; }
+      .project .side p {
+        font-size: 13.5px;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 0 0 12px;
+      }
+      .project .side p.site-link { color: var(--faint); font-style: italic; }
+      .project .shots img {
+        display: block;
+        width: 100%;
+        max-width: 920px;
+        height: auto;
+        margin: 0 auto 20px;
+      }
+      .project .shots img:last-child { margin-bottom: 0; }
+
+      /* ---------- project footer navigation ---------- */
+      .proj-nav {
+        max-width: 1440px;
+        margin: 72px auto 0;
+        border-top: 1px solid var(--line);
+        padding-top: 26px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px 28px;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .proj-nav a { text-decoration: none; color: var(--muted); font-size: 14px; transition: color 250ms ease-in-out; }
+      .proj-nav a .lbl { transition: color 250ms ease-in-out; }
+      .proj-nav a:hover { color: var(--ink); }
+      .proj-nav a .lbl {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--faint);
+        margin-bottom: 6px;
+      }
+      .proj-nav a:hover .lbl { color: var(--muted); }
+      .proj-nav a.next { text-align: right; }
+      .proj-nav a.back-all {
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding-top: 2px;
+      }
+      .proj-nav a.is-off { visibility: hidden; pointer-events: none; }
+
+      /* Floating back link on phones, shown only on project pages so a
+         long image stack never strands the visitor at the bottom. */
+      .mobile-back { display: none; }
+
+      /* ---------- about ---------- */
+      /* About follows helloox.com/about exactly: a centred two-column
+         layout. Left column — "Hello" as a larger bold heading, then the
+         intro in larger white text. Right column — "Experience" and
+         every entry in small italic grey text, the date line bold
+         italic. No large headline, no tracked all-caps headings. */
+      .about-page { max-width: 1140px; margin: 54px auto 0; }
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
+      }
+      .about-intro h1 {
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 0;
+        color: var(--ink);
+        line-height: 1.4;
+        margin: 0 0 30px;
+      }
+      .about-intro p {
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #f5f5f5;
+        margin: 0 0 18px;
+      }
+      .about-exp h2 {
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0 0 20px;
+      }
+      .about-exp .role { margin: 0 0 24px; }
+      .about-exp .role .dates {
+        font-size: 13px;
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--muted);
+        line-height: 1.5;
+        margin-bottom: 14px;
+      }
+      .about-exp .role p {
+        margin: 0;
+        font-size: 13px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.65;
+        color: var(--muted);
+      }
+      .about-exp .role p strong { font-weight: 400; color: inherit; }
+
+      /* ---------- contact ---------- */
+      .page { max-width: 680px; margin: 26px auto 0; }
+      .page h1 {
+        font-size: 34px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        margin: 0 0 26px;
+      }
+      .page p {
+        font-size: 15px;
+        line-height: 1.75;
+        color: #c9c9c9;
+        margin: 0 0 18px;
+      }
+
+      form.contact { margin-top: 8px; }
+      form.contact label {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 22px 0 8px;
+      }
+      form.contact input, form.contact textarea {
+        width: 100%;
+        background: var(--field);
+        border: 1px solid var(--field-line);
+        color: var(--ink);
+        font: inherit;
+        font-size: 15px;
+        font-weight: 400;
+        padding: 12px 14px;
+        border-radius: 2px;
+      }
+      form.contact textarea { min-height: 150px; resize: vertical; }
+      form.contact button {
+        margin-top: 26px;
+        appearance: none;
+        background: var(--ink);
+        color: #000;
+        border: 0;
+        font: inherit;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 13px 30px;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: background-color 250ms ease-in-out;
+      }
+      form.contact button:hover { background: var(--accent); color: #000; }
+      .where {
+        margin-top: 46px;
+        font-size: 13px;
+        color: var(--faint);
+        line-height: 1.7;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        position: fixed;
+        inset: auto 0 0 0;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 16px 36px 26px;
+        background: linear-gradient(to top, rgba(0,0,0,0.96) 55%, rgba(0,0,0,0));
+      }
+      footer .copy { font-size: 12.5px; color: var(--faint); }
+      .social { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+      .social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px; height: 26px;
+        border-radius: 50%;
+        background: #e8e8e8;
+        color: #000;
+        text-decoration: none;
+        transition: background-color 250ms ease-in-out;
+      }
+      .social a:hover { background: var(--accent); }
+      .social svg { width: 14px; height: 14px; fill: currentColor; display: block; }
+
+      .view[hidden] { display: none; }
+      /* Softer view changes: switching between Work / About / Contact
+         and opening a project used to be an instant cut. The original
+         site fades its content in (its navigator uses an opacity
+         .5s ease-in-out transition), so each view now fades in the
+         same way — opacity only, no slide — whenever it is shown. */
+      .view:not([hidden]) { animation: view-in 500ms ease-in-out; }
+      @keyframes view-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @media (max-width: 640px) {
+        header { padding: 26px 20px 12px; }
+        main { padding: 118px 20px 110px; }
+        body.on-project main { padding-bottom: 148px; }
+        footer { padding: 12px 20px calc(18px + env(safe-area-inset-bottom, 0px)); }
+        #view-work { margin: 0 -20px; }
+        .identity .name { letter-spacing: 0.26em; }
+        .identity .tagline { font-size: 11px; }
+        nav.main-nav { gap: 18px; }
+        nav.main-nav button { padding: 6px 5px 12px; }
+        /* About stacks on phones: intro first, Experience below it,
+           in the same order and styling as the desktop columns. */
+        .about-page { margin-top: 6px; }
+        .about-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+        .about-intro p { font-size: 16px; }
+        .project { grid-template-columns: 1fr; gap: 8px; }
+        .project .side { position: static; }
+        .project h1 { margin-top: 6px; }
+        /* Bottom project nav: stack it instead of letting three links
+           squeeze and wrap in a flex row. "Back to all work" gets its own
+           full-width row on top, then Previous / Next share a row as two
+           equal columns — nothing sits beside a long project name, and
+           every link is a tall, easy tap target. */
+        .proj-nav {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          grid-template-areas:
+            "back back"
+            "prev next";
+          gap: 14px 20px;
+          margin-top: 48px;
+          padding-top: 20px;
+          align-items: start;
+        }
+        .proj-nav a.back-all {
+          grid-area: back;
+          justify-self: stretch;
+          text-align: center;
+          font-size: 12px;
+          padding: 13px 16px;
+          border: 1px solid var(--line);
+          border-radius: 999px;
+          color: var(--ink);
+        }
+        .proj-nav a.prev {
+          grid-area: prev;
+          padding: 6px 0 10px;
+          line-height: 1.45;
+          overflow-wrap: break-word;
+        }
+        .proj-nav a.next {
+          grid-area: next;
+          padding: 6px 0 10px;
+          line-height: 1.45;
+          overflow-wrap: break-word;
+        }
+        .proj-nav a .lbl { margin-bottom: 5px; }
+        /* Floating back pill: centered above the fixed footer so it never
+           sits on top of the left-hand Previous link, and it fades out
+           (see the IntersectionObserver in the script) once the bottom
+           project nav scrolls into view — the overlap in the screenshot
+           where it covered the "2XL Games" name can't happen. */
+        body.on-project .mobile-back {
+          display: inline-flex;
+          position: fixed;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+          z-index: 30;
+          align-items: center;
+          white-space: nowrap;
+          background: rgba(13, 13, 13, 0.94);
+          border: 1px solid var(--line);
+          border-radius: 999px;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+          color: var(--ink);
+          font-size: 13px;
+          letter-spacing: 0.04em;
+          text-decoration: none;
+          padding: 10px 20px;
+          transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+        }
+        body.on-project .mobile-back.is-hidden {
+          opacity: 0;
+          pointer-events: none;
+          transform: translateX(-50%) translateY(8px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .tile .hover, .tile img, .tile:not(.is-locked), .mobile-back, nav.main-nav button, nav.main-nav .nav-label, .proj-nav a,
+        .proj-nav a .lbl, form.contact button, .social a { transition: none; }
+        .tile:not(.is-locked):hover img, .tile:focus-within img, .tile:not(.is-locked):active { transform: none; }
+        .view:not([hidden]) { animation: none; }
+        .tile.is-locked:hover .lock-badge svg,
+        .tile.is-locked:active .lock-badge svg,
+        .tile.is-locked:hover .lock-badge .shackle,
+        .tile.is-locked:active .lock-badge .shackle { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="main-nav" aria-label="Main">
+        <button type="button" data-view="work" aria-current="page" aria-label="Work">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+          <span class="nav-label" aria-hidden="true">Work</span>
+        </button>
+        <button type="button" data-view="about" aria-label="About">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5.2 19.6c1.1-3.4 3.7-5.2 6.8-5.2s5.7 1.8 6.8 5.2"/></svg>
+          <span class="nav-label" aria-hidden="true">About</span>
+        </button>
+        <button type="button" data-view="contact" aria-label="Contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect class="env-letter" x="6.5" y="7" width="11" height="8" rx="1"/><rect x="3" y="5.5" width="18" height="13" rx="2" fill="#000"/><path class="env-flap" d="M4 7.2l8 6 8-6"/></svg>
+          <span class="nav-label" aria-hidden="true">Contact</span>
+        </button>
+      </nav>
+      <div class="identity">
+        <div class="name">Kenny Chui</div>
+        <div class="tagline">Design + Creative Direction</div>
+      </div>
+    </header>
+
+    <a class="mobile-back" href="#work">&larr;&ensp;All work</a>
+
+    <main>
+      <!-- WORK -->
+      <section class="view" id="view-work" aria-label="Work">
+        <ul class="grid" id="grid"></ul>
+      </section>
+
+      <!-- PROJECT -->
+      <section class="view" id="view-project" aria-label="Project" hidden>
+        <div class="project">
+          <div class="side">
+            <h1 id="proj-title"></h1>
+            <div id="proj-desc"></div>
+          </div>
+          <div class="shots" id="proj-shots"></div>
+        </div>
+        <nav class="proj-nav" aria-label="More projects">
+          <a class="prev" id="proj-prev" href="#"><span class="lbl">&larr; Previous project</span><span id="proj-prev-name"></span></a>
+          <a class="back-all" href="#work">Back to all work</a>
+          <a class="next" id="proj-next" href="#"><span class="lbl">Next project &rarr;</span><span id="proj-next-name"></span></a>
+        </nav>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="view about-page" id="view-about" aria-label="About" hidden>
+        <div class="about-grid">
+          <div class="about-intro">
+            <h1>Hello!</h1>
+            <p>As a multi-disciplinary designer, I am passionate about creating meaningful experiences that connect people to products through design. With over 29 years of professional experience in various design fields, including illustration/fine art, branding/logotype design, structural/packaging design, interaction/user experience design, and end-to-end product design, I have developed a diverse skill set that allows me to approach projects from multiple angles.</p>
+          </div>
+
+          <div class="about-exp">
+            <h2>Experience</h2>
+
+            <div class="role">
+              <div class="dates">January 2021 – Present</div>
+              <p><strong>Product Design Manager at Meta</strong></p>
+            </div>
+
+            <div class="role">
+              <div class="dates">July 2017 – February 2020</div>
+              <p><strong>Product Design at Google Nest.</strong> Responsible for visual design systems across all surfaces. This includes 2 apps - Google Home and legacy Nest app and hardware with displays (such as the Nest thermostats and our smart displays).</p>
+            </div>
+
+            <div class="role">
+              <div class="dates">November 2014 – July 2017</div>
+              <p><strong>Head of Visual Design and Project Lead (Senior Staff) for ID8 Innovation Lab at Samsung,</strong> responsible for design, use case and best user experience for our reference products. Products include, OTTO - a home companion robot, Night Hawk - a smart home security system and other IoT products.</p>
+            </div>
+
+            <div class="role">
+              <div class="dates">October 2009 – October 2014</div>
+              <p><strong>Principal Designer at frog,</strong> where I led design and conceptualized diverse programs from building an engaging website for ITO EN’s Teas’ Tea product to global brand strategy and packaging for Microsoft Office.</p>
+            </div>
+
+            <div class="role">
+              <div class="dates">October 2004 – October 2009</div>
+              <p><strong>Creative Director &amp; Co-Founder of Make Creative,</strong> a collaborative design studio where we conceptualized &amp; produced creative solutions for our diverse clients.</p>
+            </div>
+
+            <div class="role">
+              <div class="dates">October 1997 – October 2004</div>
+              <p><strong>Design Director at Landor Associates (NYC, SEA, HK),</strong> where I conceptualized, designed, and led various branding and packaging programs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="view page" id="view-contact" aria-label="Contact" hidden>
+        <h1>Send me a message</h1>
+        <form class="contact" id="contact-form">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required />
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required />
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="copy">© 2026 Kenny Chui. All right reserved.</div>
+      <ul class="social">
+        <li>
+          <a href="mailto:kapachui@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5zm2.3.3 7.7 5.9 7.7-5.9H4.3zM20 7.4l-8 6.1-8-6.1V19h16V7.4z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.linkedin.com/in/kennychui" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.49 2.49 0 1 1 5 8.48a2.49 2.49 0 0 1 0-4.98zM3 9.75h4V21H3zM9.5 9.75h3.8v1.7h.06c.53-1 1.83-2.06 3.77-2.06 4 0 4.77 2.65 4.77 6.1V21h-4v-4.9c0-1.17 0-2.68-1.63-2.68s-1.89 1.28-1.89 2.6V21h-4z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </footer>
+
+    <script>
+      // Project tiles, in the exact order of helloox.com.
+      // Confirmed: only Meta Facebook, Google Nest (Google) and Samsung are
+      // locked — those three tiles open nothing and carry a lock icon.
+      // All 37 other projects have content and open a project page here with
+      // the title and text from their page on helloox.com.
+      // Entry: [tile name, cover image, locked?, page slug, page title, [paragraphs], site link text]
+      var PROJECTS = [
+        ["Meta Facebook", "FB.png", true, "metafacebook", "", [], ""],
+        ["Google Nest", "google.png", true, "googlenest", "", [], ""],
+        ["Samsung", "samsung.png", true, "samsung", "", [], ""],
+        ["Comcast", "Comcast-01.png", false, "comcast", "Comcast",
+          ["To design and rebrand Comcast identity."], ""],
+        ["New Matter", "NM_Cover.png", false, "new-matter", "New Matter",
+          ["Branding for IdeaShaper’s 3D printer (Mod-t) and marketplace (New Matter). The idea of constant making, creating, sharing and accessible to everyone."], ""],
+        ["NYC Payphones", "NYCpayphone-01.png", false, "nycpayphones", "Beacon",
+          ["Concept design for Reinvent Payphones Design Challenge.",
+           "Beacon is New York City's next generation communication and information hub.",
+           "Beacon was awarded “best visual design and user experience” by New York City officials in late 2012."], ""],
+        ["Frog design", "frog-01.png", false, "frog-design", "Frog design",
+          ["Refresh of the frog brand identity and logomark (Friedolin)."], ""],
+        ["Designmind", "DM-01.png", false, "designmind", "Designmind",
+          ["Brand identity concept for frog Designmind, an online publication."], ""],
+        ["IMAX", "IMAX_Cover.png", false, "imax", "IMAX",
+          ["Brand concepts for IMAX, to reimagine the IMAX experience through all touch points."], ""],
+        ["ITO EN Teas' Tea", "TT_Cover.png", false, "itoen-teastea", "ITO EN Teas’ Tea",
+          ["To develop ITO EN Teas’ Tea website that will serve as a gateway to the true tastes of tea and provide visitors with easy but also engaging access to relevant information on the Teas’ Tea product lines and related nutritional benefits."], "www.teastea.com"],
+        ["Microsoft Office 2014", "MSFT-01.png", false, "microsoftoffice-2014", "Microsoft Office 2014",
+          ["To design the new Office suite packaging that aligns with Microsoft's new visual design principles and brand attributes.",
+           "Packaging exemplifies radical simplicity and fierce reduction of materials but yet signals quality and innovation."], ""],
+        ["Microsoft Office 2011", "MSFT2011-01.png", false, "microsoftoffice-2011", "Microsoft Office 2011",
+          ["To create brand strategy and brand design language for all touch points. This includes new identity, desktop icons, packaging, structure, retail, web and advertising."], ""],
+        ["Microsoft Office:mac", "OM_Cover.png", false, "microsoft-officemac", "Microsoft Office:mac",
+          ["Design full experience for Office:mac that connects mac users."], ""],
+        ["Macromedia", "M-01.png", false, "macromedia", "Macromedia",
+          ["To rebrand and design a packaging system for Macromedia creative suites that inspire and empower the users to create."], ""],
+        ["GE Concepts", "GE-01.png", false, "ge-concepts", "GE Concepts",
+          ["Concept for GE FutureThink user dashboard."], ""],
+        ["Sinch", "Sinch_Cover.png", false, "sinch", "Sinch",
+          ["Sinch, your headphone assistant.",
+           "To create a full brand experience, we designed the product, brand strategy, naming, identity, packaging, website and all other touch points."], ""],
+        ["Gatorade", "Gatorade_1.png", false, "gatorade", "Gatorade",
+          ["Logo and packaging design for Gatorade."], ""],
+        ["Mountain Dew", "MD_1.png", false, "mountain-dew", "Mountain Dew",
+          ["Redesign Mountain Dew to bring the characteristic of the brand “pushing the limits” on logo and packaging."], ""],
+        ["Propel", "Propel-01.png", false, "propel", "Propel",
+          ["Logo and packaging design for Propel Fitness Water."], ""],
+        ["Red Fusion", "DrPepper-01.png", false, "redfusion", "Red Fusion",
+          ["To design a logo and packaging for the new Dr. Pepper Red Fusion brand. Enhanced the name with spirited graphics that are bold, active and invertively convey a sense of bubbles, refreshment and a “fusion” of tastes."], ""],
+        ["ITO EN — Dr. Andrew Weil for Tea", "ITOEN-01.png", false, "ito-en", "ITO EN - Dr. Andrew Weil for tea",
+          ["ITO EN partnered with Dr. Andrew Weil to develop a new line of high end ready-to-drink teas for the novice tea drinker and the tea connoisseur.",
+           "Brand strategy, naming, identity, packaging, and all other touch points."], ""],
+        ["Dasani", "Dasani_1.png", false, "dasani", "Dasani",
+          ["Brand identity and package design concepts for Dasani Spring! - water for kids."], ""],
+        ["Dewar's", "Dewars_Cover.png", false, "dewars", "Dewar’s",
+          ["Redesign packaging and structures for the entire Dewar’s product line."], ""],
+        ["Bacardi Cazadores", "Cazadores_1.png", false, "cazadores", "Bacardi Cazadores",
+          ["Design bottle structure and label design.",
+           "Current perception of Cazadores is older, traditional, serious and masculine. The desire is to re-frame the core authentic and masculine brand values to make the brand more unisex, younger adult, middle class and urban.",
+           "Challenging the stereotypes by fusing the old with new. Attributes includes, unisex, urban, strength, energy, and playful."], ""],
+        ["Garnish", "GarnishMalt_Cover.png", false, "garnish", "Garnish",
+          ["Logo and bottle concepts design for Garnish, a premium malt beverage."], ""],
+        ["Aromatherapy", "AROMATHERAPY_1.png", false, "aromatherapy", "Aromatherapy",
+          ["Design and develop Bath & Body Works Aromatherapy bottle structure and label design."], ""],
+        ["Claritin", "Claritin_1.png", false, "claritin", "Claritin",
+          ["Package design concepts for Claritin."], ""],
+        ["eos", "eos_1.png", false, "eos", "eos",
+          ["Packaging concepts for eos."], ""],
+        ["BIC", "BIC_Cover.png", false, "bic", "BIC",
+          ["Logo and packaging design concepts for Bic Comfort 4."], ""],
+        ["Delta", "Delta_Cover.png", false, "delta", "Delta",
+          ["To design and rebrand Delta Airlines to a warmer and friendlier experience by softening & simplifying all touch points."], ""],
+        ["Malaysia Airlines", "MA_Cover.png", false, "malaysia-airlines", "Malaysia Airlines",
+          ["Redesign and rebrand Malaysia Airlines using their current idea of the kite, made it premium, elegant, modern yet full of authenticity from its patterns. Carefully balanced old with new."], ""],
+        ["Japan Airlines", "JP_Cover.png", false, "japan-airlines", "Japan Airlines",
+          ["Concept design for Japan Airlines.",
+           "Redesign and rebrand Japan Airlines where traditional values meet modern aspirations. In this concept, Japan’s rich artistic heritage sits against futuristic minimalism."], ""],
+        ["Bionaire", "B_Cover.png", false, "bionaire", "Bionaire",
+          ["To build credentials into a premium range of air cleaners, heaters, fans and humidifiers. Our goal was to capture the upscale consumers with an aspirational brand platform that speaks high performance with simple clean aesthetics.",
+           "We created a distinctive mark and logotype to capture the brand’s premium position. As an home environment product, white was use on the package to create the sense of clean air, a sophisticated color palette to distinguish categories, and within the “wave” a dramatic product photography was use to higlight the unique design. When on shelve the “wave” also helps creates a billboard affect.",
+           "The relaunch of the Bionaire brand in 2000 was very successful, achieving distribution in a wide variety of upscale outlets and quickly establishing Bionaire as the preferred high-end brand among consumers."], ""],
+        ["Nature's Promise", "NP_Cover.png", false, "natures-promise", "Nature’s Promise",
+          ["Concept logo and packaging for Stop & Shop Nature’s Promise house brand."], ""],
+        ["Vlasic", "Vlasic-01.png", false, "vlasic", "Vlasic",
+          ["Redesign labels and evolve the Vlasic Pickle Stork."], ""],
+        ["nice'n easy", "NNE_Cover.png", false, "nicen-easy", "nice’n easy",
+          ["To showcase the core concept “blend of 3 tones - Color blend Technology”, develop a distinctive visual graphic elements on the front of pack that will also be used through all the consumer touch-points."], ""],
+        ["St. Francis", "SF_Cover.png", false, "st-francis", "St. Francis",
+          ["Brand concepts for Saint Francis Redevelopment at Hamilton Park."], ""],
+        ["Wildlife Conservation Society", "WCS_Cover.png", false, "wildlife-conservation-society", "Wildlife Conservation Society",
+          ["Wildlife Conservation Society is an organization that helps save wildlife and wildlands through science, conservation and education.",
+           "Created an identity system constructed out of origami paper that spoke to the fragility of the environment and to help aid in the education of the younger generation."], ""],
+        ["WinShape Foundation", "WSF_Cover.png", false, "winshape-foundation", "WinShape Foundation",
+          ["To design an identity for WinShape Foundation.",
+           "Using “W” to represent the different WinShape programs that forms a star, or sun like icon that speaks to hope, strength, energy and togetherness. A unique and recognizable icon that can be use as an endorser for the different WinShape programs."], ""],
+        ["2XL Games", "2XL_1.png", false, "2xl-games", "2XL Games",
+          ["To design a corporate identity for 2XL Games that speaks to excellence and acceleration."], "www.2xlgames.com"]
+      ];
+
+      var grid = document.getElementById("grid");
+      PROJECTS.forEach(function (p) {
+        var li = document.createElement("li");
+        li.className = "tile";
+        var img = document.createElement("img");
+        img.src = "assets/" + p[1];
+        img.alt = p[0];
+        img.loading = "lazy";
+        if (p[2]) {
+          li.classList.add("is-locked");
+          li.appendChild(img);
+          // Lock icon in place of a "Locked" text label: a thin-stroke
+          // outline padlock with a separate shackle path, so the hover
+          // rattle in the CSS can tug the shackle on its own. Decorative
+          // only — the tile's aria-label below carries the state.
+          var badge = document.createElement("span");
+          badge.className = "lock-badge";
+          badge.setAttribute("aria-hidden", "true");
+          badge.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="shackle" d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><rect x="5" y="10.5" width="14" height="9" rx="2"/><circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"/></svg>';
+          li.appendChild(badge);
+          // Not focusable: locked tiles open nothing, so they get no link
+          // or focus state — the lock icon's hover rattle is their only
+          // response, identical for all three.
+          li.setAttribute("aria-label", p[0] + " — locked");
+        } else {
+          li.setAttribute("data-slug", p[3]);
+          var a = document.createElement("a");
+          a.href = "#project/" + p[3];
+          a.setAttribute("aria-label", p[0] + " — view project");
+          // Open the project directly on click instead of relying on
+          // the browser following the "#project/…" fragment and firing
+          // hashchange. Inside the sandboxed frame this page runs in
+          // when embedded, fragment navigations can be swallowed and
+          // pushState can throw, which left every tile looking dead:
+          // the tap landed, but nothing ever opened. The handler below
+          // does the routing itself; the href stays for semantics and
+          // for plain hosting, where the same handler still applies.
+          // The tile element goes along so the shared-element
+          // transition can lift the cover off this exact tile.
+          (function (slug, tileEl) {
+            a.addEventListener("click", function (e) {
+              e.preventDefault();
+              openProjectShared(slug, tileEl);
+            });
+          })(p[3], li);
+          a.appendChild(img);
+          // Hover overlay: just the transparent blue fill over the
+          // cover, no text inside it. Shown on hover/focus via the
+          // .hover CSS above.
+          var hover = document.createElement("span");
+          hover.className = "hover";
+          hover.setAttribute("aria-hidden", "true");
+          a.appendChild(hover);
+          li.appendChild(a);
+        }
+        grid.appendChild(li);
+      });
+
+      // Project image sets: every image from each project's page on
+      // helloox.com, in page order, as [file, original alt text].
+      // Files live in assets/projects/<slug>/. One image is absent:
+      // 2XL_MOV.png on the 2XL Games page returns 404 from
+      // Squarespace's own CDN, so it does not render there either.
+      var PROJECT_IMAGES = {
+        "comcast": [["01-Comcast_Cover-02.webp", "Comcast_logo"], ["02-Cast.webp", "Cast font_cover"], ["03-CastFont.webp", "Cast font"], ["04-Divider-01.webp", "Moodboard_divider"], ["05-COMCAST_Mood_Final.webp", "moodboard"], ["06-Divider-06.webp", "Brand guidelines-divider"], ["07-CMCST_BrandGuideline_Page_02.webp", "Brand guidelines_1"], ["08-CMCST_BrandGuideline_Page_03.webp", "brand guidelines_2"], ["09-CMCST_BrandGuideline_Page_04.webp", "brand guidelines_3"], ["10-CMCST_BrandGuideline_Page_05.webp", "brand guidelines_4"], ["11-CMCST_BrandGuideline_Page_06.webp", "brand guidelines_5"], ["12-CMCST_BrandGuideline_Page_07.webp", "brand guidelines_6"], ["13-CMCST_BrandGuideline_Page_08.webp", "brand guidelines_7"], ["14-CMCST_BrandGuideline_Page_09.webp", "brand guidelines_8"], ["15-CMCST_BrandGuideline_Page_10.webp", "brand guidelines_9"], ["16-CMCST_BrandGuideline_Page_11.webp", "brand guidelines_10"], ["17-CMCST_BrandGuideline_Page_12.webp", "brand guidelines_11"], ["18-CMCST_BrandGuideline_Page_13.webp", "brand guidelines_12"], ["19-CMCST_BrandGuideline_Page_14.webp", "brand guidelines_13"], ["20-CMCST_BrandGuideline_Page_15.webp", "brand guidelines_14"], ["21-CMCST_BrandGuideline_Page_16.webp", "brand guidelines_15"], ["22-CMCST_BrandGuideline_Page_17.webp", "brand guidelines_16"], ["23-CMCST_BrandGuideline_Page_18.webp", "brand guidelines_17"], ["24-CMCST_BrandGuideline_Page_19.webp", "brand guidelines_18"], ["25-CMCST_BrandGuideline_Page_20.webp", "brand guidelines_19"], ["26-CMCST_BrandGuideline_Page_21.webp", "brand guidelines_20"], ["27-CMCST_BrandGuideline_Page_22.webp", "brand guidelines_21"], ["28-CMCST_BrandGuideline_Page_23.webp", "brand guidelines_22"], ["29-CMCST_BrandGuideline_Page_24.webp", "brand guidelines_23"], ["30-CMCST_BrandGuideline_Page_25.webp", "brand guidelines_24"], ["31-CMCST_BrandGuideline_Page_26.webp", "brand guidelines_25"], ["32-Divider-05.webp", "Concepts_divider"], ["33-LogoExplore_1.webp", "Concept 1.1"], ["34-LogoExplore_2.webp", "Concept 1.2"], ["35-LogoExplore_3.webp", "Concept 1.3"], ["36-LogoExplore_4.webp", "Concept 2.1"], ["37-LogoExplore_5.webp", "Concept 2.2"], ["38-LogoExplore_6.webp", "Concept 2.3"], ["39-LogoExplore_7.webp", "Concept 3.1"], ["40-LogoExplore_8.webp", "Concept 3.2"], ["41-LogoExplore_10.webp", "Concept 4"], ["42-LogoExplore_9.webp", "Concept 5"], ["43-LogoExplore_12.webp", "Concept 6"], ["44-LogoExplore_11.webp", "Concept 7"], ["45-LogoExplore_13.webp", "Concept 8"]],
+        "new-matter": [["01-NM_2b.webp", "NM_logo"], ["02-Divider-01.webp", "NM_moodboard divider"], ["03-NM_1.webp", "NM_moodboard"], ["04-Divider-02.webp", "NM_development divider"], ["05-NM_2.webp", "NM_ideation1"], ["06-NM_3.webp", "NM_ideation2"], ["07-NM_1a.webp", "NM_logomark"], ["08-NM_10.webp", "NM_colorstype"], ["09-NM_11.webp", "NM_bc"], ["10-NM_12.webp", "NM_mod-t"], ["11-NM_13.webp", "NM_printer"]],
+        "nycpayphones": [["01-reinventpayphones_BEACON.webp", ""], ["02-reinventpayphones_BEACON_large.webp", ""], ["03-reinventpayphones_BEACON_frog_context1.webp", "Beacon_full"], ["04-reinventpayphones_BEACON_frog_screen1.webp", "Beacon_closeup"], ["05-reinventpayphones_BEACON_frog_emergency1.webp", "Beacon_emergency"], ["06-reinventpayphones_BEACON_frog_emergency2.webp", "Beacon_emergency_detail"], ["07-reinventpayphones_BEACON_frog_wall1.webp", "Beacon_wall unit"], ["08-reinventpayphones_BEACON_frog_wall2.webp", "Beacon_wall unit front"], ["09-NYCpayphone_Cover-02.webp", "Beacon UI_1"], ["10-NYCpayphone_Cover-03.webp", "Beacon UI_2"], ["11-NYCpayphone_Cover-04.webp", "Beacon UI_3"]],
+        "frog-design": [["01-frog-04.webp", "frog-04.png"], ["02-frog-02.webp", "frog_logotype"], ["03-frog-05.webp", "frog-05.png"], ["04-frog-03.webp", "frog_friedolin big"], ["05-Divider-06.webp", "Divider-06.png"], ["06-frog_guides-01.webp", "frog_guides-01.png"], ["07-FRIEDOLIN.webp", "frog_friedolin"], ["08-FRIEDOLIN_WebONLY.webp", "frog_friedolin web"]],
+        "designmind": [["01-DesignMind_FINAL.webp", "Designmind_logo"], ["02-DesignMind_FINAL_ON-COLORS.webp", "Designmind_colors"], ["03-DM5.webp", "Designmind_nav"]],
+        "imax": [["01-IMAX_BE_Allconcepts_Page_1.webp", "IMAX 1"], ["02-IMAX_BE_Allconcepts_Page_2.webp", "IMAX 2"], ["03-IMAX_BE_Allconcepts_Page_3.webp", "IMAX 3"]],
+        "itoen-teastea": [["01-01_Home.webp", "TT_1"], ["02-02_Main.webp", "TT_2"], ["03-04_ROLLOVER.webp", "TT_3"], ["04-08_COUNTRY_PEACH.webp", "TT_4"], ["05-09_APPLE.webp", "TT_5"], ["06-10_APPLE_NUTRITION_FACTS_EXAMPLE.webp", "TT_6"], ["07-07_MANGO_OOLONG.webp", "TT_7"], ["08-06_BLUEBERRY_BT.webp", "TT_8"], ["09-05_LEMON_BT.webp", "TT_9"], ["10-05_LEMON_BT-Tooltip.webp", "TT_10"], ["11-05_LEMON_BT-Tooltip-2.webp", "TT_11"], ["12-11_PURE_GT.webp", "TT_12"], ["13-12_PURE_GT_2L.webp", "TT_13"], ["14-13_JASMINE.webp", "TT_14"], ["15-13_JASMINE-_2L.webp", "TT_15"], ["16-14_GREEN_WT.webp", "TT_16"], ["17-14_GREEN_WT_2l.webp", "TT_17"], ["18-15_LEMONGRASS.webp", "TT_18"], ["19-16_ROSE.webp", "TT_19"], ["20-17_MINT.webp", "TT_20"], ["21-18_OOLONG.webp", "TT_21"], ["22-18_OOLONG-_2L.webp", "TT_22"], ["23-03_News.webp", "TT_23"], ["24-Divider-01.webp", "TT_mood board"], ["25-TT_mood_1-01.webp", "TT_mood board1"], ["26-TT_mood_2-01.webp", "TT_mood board2"], ["27-Divider-07.webp", "TT_SM IM"], ["28-TT_Site-map-1.webp", "TT_site map"], ["29-TT_Site-map-2.webp", "TT_interaction model"], ["30-Divider-05.webp", "TT_concepts divider"], ["31-TT_Concept.webp", "TT_Wire1"], ["32-TT_Concept-copy.webp", "TT_Wire2"], ["33-TT_Concept-1.webp", "TT_concept1"], ["34-TT_Concept-2.webp", "TT_concept2"], ["35-TT_Concept-3.webp", "TT_concept3"]],
+        "microsoftoffice-2014": [["01-Office_Logo.webp", "Office_Logo.png"], ["02-Office_Boxes2.webp", "Office 365_Home Premium_Home &amp; Student 2013"], ["03-Office_Hero.webp", "Office 365_SKUs"], ["04-Office_All-SKUs.webp", "Office 365_SKUs2"], ["05-Office_Openbox.webp", "Office 365_all"], ["06-MSFT_ESD.webp", "Office 365_ESD"], ["07-Divider-09.webp", "Divider_research"], ["08-MSFT_Research.webp", "Office 365_research 1"], ["09-MSFT_Learnings.webp", "Office 365_research 2"], ["10-Divider-01.webp", "Mood board_divider"], ["11-MSFT_Moodboard-01.webp", "Mood board_1"], ["12-MSFT_Moodboard-02.webp", "Mood board_2"], ["13-MSFT_Moodboard-03.webp", "Mood board_3"], ["14-Divider-05.webp", "Divider-05.png"], ["15-Office_1.webp", "Office_1.png"], ["16-Office_2.webp", "Office_2.png"], ["17-Office_3.webp", "Office_3.png"], ["18-Office_4.webp", "Office_4.png"], ["19-Office_5.webp", "Office_5.png"], ["20-Office_6.webp", "Office_6.png"], ["21-Office_7.webp", "Office_7.png"], ["22-Office_8.webp", "Office_8.png"], ["23-Office_9.webp", "Office_9.png"]],
+        "microsoftoffice-2011": [["01-MSFT2011_OM_icons.webp", "Office:mac 2011_icons"], ["02-MSFT2011_packaging.webp", "Office:mac 2011"], ["03-OM_HS.webp", "Office:mac 2011_oobx"], ["04-MSFT2011_Cover-11.webp", "Office:mac 2011_fullbox"], ["05-MSFT2011_startup.webp", "Office:mac 2011_startup"], ["06-Divider-02.webp", "Office:mac 2011_development divider"], ["07-MSFT2011_Exploration.webp", "Office:mac 2011_exploration"], ["08-MSFT_Icons2.webp", "MSFT_Icons2.gif"], ["09-Divider-04.webp", "Office:mac 2011_web divider"], ["10-microsoftOffice2011site.webp", "Office:mac 2011_web"], ["11-Divider-03.webp", "Office:mac 2011_ad_divider"], ["12-office-mac-2011.webp", "Office:mac 2011_ad"], ["13-Divider-06.webp", "Office:mac 2011_bd_divider"], ["14-Microsoft_Office_Mac_2011_Brand_Guide_Frog_Internal_Page_07.webp", "Office:mac 2011_bg_1"], ["15-Microsoft_Office_Mac_2011_Brand_Guide_Frog_Internal_Page_17.webp", "Office:mac 2011_bg_2"], ["16-Microsoft_Office_Mac_2011_Brand_Guide_Frog_Internal_Page_18.webp", "Office:mac 2011_bg_3"], ["17-Microsoft_Office_Mac_2011_Brand_Guide_Frog_Internal_Page_19.webp", "Office:mac 2011_bg_4"], ["18-Microsoft_Office_Mac_2011_Brand_Guide_Frog_Internal_Page_22.webp", "Office:mac 2011_bg_5"], ["19-Divider-05.webp", "Office:mac 2011_concept divider"], ["20-Office2011_e1.webp", "Office:mac 2011_concept 1"], ["21-Office2011_e2.webp", "Office:mac 2011_concept 2"], ["22-Office2011_e3.webp", "Office:mac 2011_concept 3"], ["23-Office2011_e4.webp", "Office:mac 2011_concept 4"], ["24-Office2011_e5.webp", "Office:mac 2011_concept 5"], ["25-Office2011_e6.webp", "Office:mac 2011_concept 6"], ["26-Office2011_e7.webp", "Office:mac 2011_concept 7"], ["27-Office2011_e10.webp", "Office:mac 2011_concept 8"], ["28-Office2011_e8.webp", "Office:mac 2011_concept 9"], ["29-Office2011_e9.webp", "Office:mac 2011_concept 10"]],
+        "microsoft-officemac": [["01-OM_1.webp", "OM_1.png"], ["02-OM_2.webp", "OM_2.png"], ["03-OM_icons2.webp", "OM_icons2.gif"], ["04-OM_3.webp", "OM_3.png"], ["05-OM_10.webp", "OM_10.png"], ["06-OM_11.webp", "OM_11.png"], ["07-OM_12.webp", "OM_12.png"], ["08-OM_13.webp", "OM_13.png"], ["09-Divider-04.webp", "Divider-04.png"], ["10-OM_14.webp", "OM_14.png"], ["11-Divider-03.webp", "Divider-03.png"], ["12-OM_19.webp", "OM_19.png"], ["13-OM_17.webp", "OM_17.png"], ["14-OM_18.webp", "OM_18.png"], ["15-OM_16.webp", "OM_16.png"]],
+        "macromedia": [["01-M_2.webp", "M 1"], ["02-M_3.webp", "M_logo"], ["03-M_4.webp", "M_icons"], ["04-M_5.webp", "M_packaging"], ["05-Divider-05.webp", "M_divider"], ["06-M_6.webp", "M_icons1"], ["07-M_7.webp", "M_icons2"]],
+        "ge-concepts": [["01-GE_Title.webp", "GE 1"], ["02-GE_Welcome.webp", "GE 2"], ["03-GE_Welcome_Exp.webp", "GE 3"], ["04-GE_Email_video.webp", "GE 4"], ["05-GE_DigitalCollab_Contacts.webp", "GE 5"], ["06-GE_DigitalCollab_Record.webp", "GE 6"], ["07-GE_Feed.webp", "GE 7"], ["08-GE_Search1.webp", "GE 8"], ["09-GE_Search2.webp", "GE 9"]],
+        "sinch": [["01-Sinch_1.webp", "Sinch_logo"], ["02-Sinch_2.webp", "Sinch_product"], ["03-Sinch_3.webp", "Sinch_package 1"], ["04-Sinch_5.webp", "Sinch_package 2"], ["05-Sinch_6.webp", "Sinch_package 3"], ["06-Sinch_7.webp", "Sinch_package case"], ["07-Divider-04.webp", "Sinch_web divider"], ["08-web3.webp", "Sinch_web"], ["09-Divider-05.webp", "Sinch_concepts divider"], ["10-Sinch_8.webp", "Sinch_concepts 1"], ["11-Sinch_9.webp", "Sinch_concepts 1a"], ["12-Sinch_10.webp", "Sinch_concepts 1b"], ["13-Sinch_11.webp", "Sinch_concepts 2"], ["14-Sinch_12.webp", "Sinch_concepts 3"]],
+        "gatorade": [["01-Gatorade_2.webp", "Gatorade_logo"], ["02-Gatorade_3.webp", "Gatorade_label"], ["03-Gatorade_4.webp", "Gatorade_photo"]],
+        "mountain-dew": [["01-MD_2.webp", "Dew_logo"], ["02-MD_19.webp", "Dew_label"], ["03-MD_22.webp", "Dew_packaging"], ["04-Divider-05.webp", "Dew_concepts divider"], ["05-MD_3.webp", "Dew_concepts1"], ["06-MD_5.webp", "Dew_concepts2"], ["07-MD_6.webp", "Dew_concepts3"], ["08-MD_7.webp", "Dew_concepts4"], ["09-MD_8.webp", "Dew_concepts5"], ["10-MD_9.webp", "Dew_concepts6"], ["11-MD_10.webp", "Dew_concepts7"], ["12-MD_11.webp", "Dew_concepts8"], ["13-MD_12.webp", "Dew_concepts9"], ["14-MD_13.webp", "Dew_concepts10"], ["15-MD_14.webp", "Dew_concepts11"], ["16-MD_15.webp", "Dew_concepts12"], ["17-MD_17.webp", "Dew_concepts13"], ["18-MD_18.webp", "Dew_concepts14"], ["19-MD_16.webp", "Dew_concepts15"]],
+        "propel": [["01-Propel_2.webp", "Propel_logo"], ["02-Propel_3.webp", "Propel_1"], ["03-Propel_4.webp", "Propel_2"], ["04-Divider-05.webp", "Propel_concepts divider"], ["05-Propel_5.webp", "Propel_concept 1"], ["06-Propel_6.webp", "Propel_concept 2"]],
+        "redfusion": [["01-DrPepper-02.webp", "DrPepper-02.png"], ["02-DrPepper_Cover-03.webp", "DP_can"]],
+        "ito-en": [["01-ITOEN_logo.webp", "ITO EN_logo"], ["02-ITOEN-03.webp", "ITO EN_lineup"], ["03-ITOEN-04.webp", "ITO EN_RTD mix lineup"], ["04-ITOEN_Research.webp", "ITO EN_RTD mix"], ["05-ITOEN_TBox.webp", "ITO EN_teabox lineup"], ["06-ITOEN_TBoxStack.webp", "ITO EN_teabox stacked"], ["07-ITOEN-08.webp", "ITO EN_canister"], ["08-ITOEN-09.webp", "ITO EN_canister FB"]],
+        "dasani": [["01-Dasani_4.webp", "Dasani_logo"], ["02-Dasani_8.webp", "Dasani_characters"], ["03-Dasani_5.webp", "Dasani_puzzle"], ["04-Dasani_6.webp", "Dasani_bottle"], ["05-Dasani_7.webp", "Dasani_bottle 2"], ["06-Dasani_2.webp", "Dasani_water"], ["07-Dasani_3.webp", "Dasani_water bottle"]],
+        "dewars": [["01-Dewars_1.webp", "Dewars logo"], ["02-Dewars_2.webp", "Dewars 1"], ["03-Dewars_3.webp", "Dewars 2"], ["04-Dewars_5.webp", "Dewars 3"], ["05-Dewars_6.webp", "Dewars 3a"]],
+        "cazadores": [["01-Divider-08.webp", "BC_divider old design"], ["02-Cazadores_2.webp", "BC_old design"], ["03-Divider-05.webp", "BC_divider concepts"], ["04-Cazadores_3.webp", "BC_logo"], ["05-Cazadores_4.webp", "BC_stag"], ["06-Cazadores_5.webp", "BC_bottle 1"], ["07-Cazadores_6.webp", "BC_bottle 2"]],
+        "garnish": [["01-GarnishMalt_Logo.webp", "G_logo"], ["02-GarnishMalt_Bottles.webp", "G_bottles"], ["03-Divider-10.webp", "G_divider sketches"], ["04-GarnishMalt_Concepts.webp", "G_sketches"]],
+        "aromatherapy": [["01-Brick-Mod.webp", "Aromatherapy_1"], ["02-Brick-Diamond.webp", "Aromatherapy_2"], ["03-Brick-Octagon.webp", "Aromatherapy_3"], ["04-Flat-Curves.webp", "Aromatherapy_4"], ["05-Flat-Inward.webp", "Aromatherapy_5"], ["06-Flat-Leaf.webp", "Aromatherapy_6"], ["07-Flat-Ribbed.webp", "Aromatherapy_7"], ["08-Square-Round.webp", "Aromatherapy_8"], ["09-Divider-02.webp", "Aromatherapy_development"], ["10-AROMATHERAPY_3.webp", "AROMATHERAPY_3.png"], ["11-AROMATHERAPY_4.webp", "Aromatherapy_concepts 2"], ["12-Divider-05.webp", "Aromatherapy_concepts divider"], ["13-AROMATHERAPY_2.webp", "Aromatherapy_concepts 3"]],
+        "claritin": [["01-Claritin_2.webp", "Claritin_2.png"], ["02-Claritin_3.webp", "Claritin_3.png"], ["03-Claritin_5.webp", "Claritin 3"]],
+        "eos": [["01-eos_logo.webp", "eos_logo"], ["02-eos_2.webp", "eos_research 1"], ["03-eos_3.webp", "eos_research 2"], ["04-eos_4.webp", "eos_research 3"], ["05-eos_5.webp", "eos_research 4"], ["06-eos_6.webp", "eos_research 5"], ["07-eos_7.webp", "eos_concept 1"], ["08-eos_8.webp", "eos_concept 2"]],
+        "bic": [["01-Divider-08.webp", "BIC_old design divider"], ["02-BIC_Package.webp", "BIC_old"], ["03-Divider-05.webp", "BIC_concepts divider"], ["04-BIC_Logo.webp", "BIC_concepts 1"], ["05-BIC_Logo-2.webp", "BIC_concepts 2"]],
+        "delta": [["01-Delta_Cover_1.webp", "Delta_Cover_1.png"], ["02-Delta_Cover_10.webp", "Delta_fabric1"], ["03-Delta_Cover_11.webp", "Delta_fabric3"], ["04-Delta_Cover_12.webp", "Delta_fabric2"], ["05-Delta_Cover_Tail.webp", "Delta_Cover_Tail.png"], ["06-Delta_Cover_2.webp", "Delta_Cover_2.png"], ["07-Delta_Cover_3.webp", "Delta_Cover_3.png"], ["08-Delta_Cover_5.webp", "Delta_Cover_5.png"]],
+        "malaysia-airlines": [["01-MA_Logo.webp", "MA_logo"], ["02-MA_Livery.webp", "MA_livery"], ["03-MA_Tickets.webp", "MA_ticket"], ["04-MA_AD.webp", "MA_ad"], ["05-Divider-05.webp", "MA_concept divider"], ["06-MA_Logo-copy.webp", "MA_concept logo"], ["07-MA_Livery-copy.webp", "MA_concept livery"], ["08-MA_Tickets-copy.webp", "MA_concept ticket"]],
+        "japan-airlines": [["01-JP_Logo.webp", "JP_logo"], ["02-JP_Livery.webp", "JP_livery"], ["03-JP_Logo1.webp", "JP_logo1"], ["04-JP_Logo2.webp", "JP_logo2"], ["05-JP_Ticket-tag.webp", "JP_ticket"], ["06-Divider-05.webp", "JP_concepts divider"], ["07-JP_Concepts.webp", "JP_concepts"]],
+        "bionaire": [["01-B_Logo.webp", "Bionaire_logo"], ["02-B_Logo-2.webp", "Bionaire_packaging"], ["03-B-05.webp", "Bionaire_packaging1"], ["04-B-06.webp", "Bionaire_packaging2"], ["05-B_Package.webp", "Bionaire_diagram"]],
+        "natures-promise": [["01-NP_1.webp", "NP_logo"], ["02-NP_2.webp", "NP_packaging1"], ["03-NP_4.webp", "NP_packaging2"], ["04-NP_5.webp", "NP_packaging3"], ["05-NP_6.webp", "np-packaging4"], ["06-NP_7.webp", "np-packaging5"]],
+        "vlasic": [["01-Vlasic_2_2.webp", "Vlasic_cap"], ["02-Vlasic_4.webp", "Vlasic_detail"], ["03-Vlasic_3.webp", "Vlasic_label detail"], ["04-Vlasic_6.webp", "Vlasic_label"], ["05-Vlasic_7.webp", "Vlasic_packaging"]],
+        "nicen-easy": [["01-NNE_Logo.webp", "NNE_logo"], ["02-NNE_Logo-2.webp", "NNE_Colorblend"], ["03-NNE_Package.webp", "xNNE_lineup"]],
+        "st-francis": [["01-SF_1.webp", "SF_1"], ["02-SF_2.webp", "SF_2.png"], ["03-SF_3.webp", "SF_3.png"], ["04-SF_4.webp", "SF_4.png"], ["05-SF_5.webp", "SF_5.png"], ["06-SF_6.webp", "SF_6.png"], ["07-SF_7.webp", "SF_7.png"]],
+        "wildlife-conservation-society": [["01-WCS_Logo.webp", "WCS_logo"], ["02-WCS_Logo2.webp", "WCS_logo2"], ["03-WCS_letterhead.webp", "WCS_stationary"], ["04-WCS_BC.webp", "WCS_card"], ["05-WCS_AD3.webp", "WCS_ad"], ["06-WCS_AD2.webp", "WCS_ad2"]],
+        "winshape-foundation": [["01-WSF_Logo.webp", "WSF_logo"], ["02-WSF_Livery.webp", "WSF_bc1"], ["03-WSF_Tickets.webp", "WSF_bc2"], ["04-WSF_AD.webp", "WSF_stationary"], ["05-Divider-05.webp", "WSF_concepts divider"], ["06-WSF_Logo-copy.webp", "WSF_concept1"], ["07-WSF_Livery-copy.webp", "WSF_Livery copy.png"], ["08-WSF_Tickets-copy.webp", "WSF_Tickets copy.png"]],
+        "2xl-games": [["01-2XL_2.webp", "2XL_logo"], ["02-2XL_3.webp", "2XL_logo2"], ["03-2XL_4.webp", "2XL_bc"], ["05-Divider-05.webp", "2XL_divider concepts"], ["06-2XL_5.webp", "2XL_concepts"], ["07-2XL_6.webp", "2XL_concepts 1"], ["08-2XL_7.webp", "2XL_concepts 2"]]
+      };
+
+      // Fill the project page for a slug; returns false for unknown/locked.
+      function renderProject(slug) {
+        var found = null;
+        PROJECTS.forEach(function (p) { if (p[3] === slug && !p[2]) found = p; });
+        if (!found) return false;
+        document.getElementById("proj-title").textContent = found[4];
+        var desc = document.getElementById("proj-desc");
+        desc.innerHTML = "";
+        found[5].forEach(function (para) {
+          var el = document.createElement("p");
+          el.textContent = para;
+          desc.appendChild(el);
+        });
+        if (found[6]) {
+          var link = document.createElement("p");
+          link.className = "site-link";
+          link.textContent = found[6];
+          desc.appendChild(link);
+        }
+        // Full image set for the project, in the order the images appear
+        // on its page at helloox.com (cover first). Falls back to the
+        // cover image if a project has no set.
+        var shots = document.getElementById("proj-shots");
+        shots.innerHTML = "";
+        var hasSet = !!PROJECT_IMAGES[found[3]];
+        var set = hasSet ? PROJECT_IMAGES[found[3]] : [[found[1], found[4]]];
+        set.forEach(function (pair, i) {
+          var el = document.createElement("img");
+          el.src = hasSet ? "assets/projects/" + found[3] + "/" + pair[0] : "assets/" + pair[0];
+          el.alt = pair[1] || found[4];
+          if (i > 0) el.loading = "lazy";
+          el.decoding = "async";
+          shots.appendChild(el);
+        });
+        // Previous / Next walk the unlocked projects in grid order.
+        var open = PROJECTS.filter(function (p) { return !p[2]; });
+        var idx = open.indexOf(found);
+        var prev = idx > 0 ? open[idx - 1] : null;
+        var next = idx >= 0 && idx < open.length - 1 ? open[idx + 1] : null;
+        var prevA = document.getElementById("proj-prev");
+        var nextA = document.getElementById("proj-next");
+        if (prev) {
+          prevA.href = "#project/" + prev[3];
+          prevA.classList.remove("is-off");
+          document.getElementById("proj-prev-name").textContent = prev[0];
+        } else {
+          prevA.removeAttribute("href");
+          prevA.classList.add("is-off");
+        }
+        if (next) {
+          nextA.href = "#project/" + next[3];
+          nextA.classList.remove("is-off");
+          document.getElementById("proj-next-name").textContent = next[0];
+        } else {
+          nextA.removeAttribute("href");
+          nextA.classList.add("is-off");
+        }
+        document.title = found[4] + " — Kenny Chui";
+        return true;
+      }
+
+      // --- View switching (Work / About / Contact / Project) ---
+      // Navigation is driven by direct click handlers that swap the
+      // visible view themselves. The URL fragment is only a best-effort
+      // record of where you are (for deep links on a plain static host
+      // like GitHub Pages): every read/write of it is guarded, because
+      // in the sandboxed embedded frame this page also runs in,
+      // history.pushState can throw and fragment navigations can be
+      // swallowed by the host — either one used to leave every link
+      // and nav button dead. Nothing below lets a URL failure block a
+      // view change: the view always switches first.
+      function rememberHash(hash) {
+        try {
+          if (window.location.hash !== hash) history.pushState(null, "", hash);
+        } catch (err) { /* embedded frame refused it; view already shown */ }
+      }
+      function readHash() {
+        try { return window.location.hash.replace("#", ""); } catch (err) { return ""; }
+      }
+      function openProject(slug) {
+        if (renderProject(slug)) {
+          lastProjectSlug = slug;
+          show("project");
+          rememberHash("#project/" + slug);
+        }
+      }
+
+      // --- Shared-element transition: tile cover <-> project hero ---
+      // openProjectShared replaces the instant cut with a flight: a
+      // clone of the tile's cover sits exactly over the tapped tile,
+      // the project page is rendered and shown underneath it (its
+      // hero held invisible), and the clone animates from the tile's
+      // box to the hero's box before crossfading into the real hero.
+      // backToWorkShared runs the mirror image on the way back to
+      // the grid. Where the tile and the hero carry the same logo
+      // lockup, the flight is logo-matched (see LOGO_BOXES below):
+      // the image inside the flyer tracks the logo from its box in
+      // the tile to its box in the hero, so the logo — not just the
+      // frame — lands where the hero's logo sits. Every step that
+      // can fail — reduced motion, no Web Animations support, an
+      // unloaded or off-screen hero or tile — bails out to the plain
+      // openProject / show("work") switch, so navigation can never
+      // be blocked by the effect.
+      var lastProjectSlug = null;
+      var sharedFlight = null; // { flyer, counterpart } while flying
+
+      function cancelSharedFlight() {
+        if (!sharedFlight) return;
+        var flight = sharedFlight;
+        sharedFlight = null;
+        if (flight.flyer) {
+          try {
+            flight.flyer.getAnimations().forEach(function (anim) { anim.cancel(); });
+          } catch (err) { /* nothing to cancel */ }
+          if (flight.innerEl) {
+            try {
+              flight.innerEl.getAnimations().forEach(function (anim) { anim.cancel(); });
+            } catch (err) { /* nothing to cancel */ }
+          }
+          if (flight.flyer.parentNode) flight.flyer.parentNode.removeChild(flight.flyer);
+        }
+        if (flight.counterpart) flight.counterpart.classList.remove("awaiting-flyer");
+      }
+
+      function prefersReducedMotion() {
+        try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+        catch (err) { return false; }
+      }
+
+      function heroSrcFor(found) {
+        var set = PROJECT_IMAGES[found[3]];
+        if (set && set.length) return "assets/projects/" + found[3] + "/" + set[0][0];
+        return "assets/" + found[1];
+      }
+
+      function makeFlyer(src, rect) {
+        var flyer = document.createElement("img");
+        flyer.className = "shared-flyer";
+        flyer.alt = "";
+        flyer.setAttribute("aria-hidden", "true");
+        flyer.src = src;
+        flyer.style.left = rect.left + "px";
+        flyer.style.top = rect.top + "px";
+        flyer.style.width = rect.width + "px";
+        flyer.style.height = rect.height + "px";
+        document.body.appendChild(flyer);
+        return flyer;
+      }
+
+      // --- Logo-to-logo matching -----------------------------------
+      // Most tile covers are the project's logo small and centred on
+      // black, and many project pages open with the same lockup drawn
+      // much larger. A plain box morph lands the tile's little logo
+      // wherever the cover crop leaves it, then the crossfade pops to
+      // the hero's big logo — same logo, wrong place and size. For
+      // the projects listed here, LOGO_BOXES records the logo's
+      // bounding box in the tile cover and in the hero image (each
+      // [x0, y0, x1, y1] as fractions of that image's own size,
+      // measured from the actual image files: foreground against the
+      // image's background colour, corner captions and specks
+      // excluded). The flight then runs the cover image on its own
+      // geometry inside the morphing window so the logo's box
+      // travels from its tile box to its hero box and lands exactly
+      // on the hero's logo. Projects not listed — a photo, product
+      // or divider hero, or a lockup arranged differently in the
+      // hero than on the tile (horizontal on the tile, stacked in
+      // the hero, mark only vs full lockup) — keep the plain morph:
+      // matching is only attempted where it is actually possible.
+      var LOGO_BOXES = {
+        "comcast": [[0.375,0.421,0.625,0.579],[0.188,0.267,0.812,0.659]],
+        "new-matter": [[0.39,0.338,0.61,0.662],[0.287,0.187,0.713,0.813]],
+        "frog-design": [[0.425,0.421,0.567,0.579],[0.247,0.234,0.748,0.766]],
+        "designmind": [[0.352,0.454,0.648,0.546],[0.188,0.411,0.812,0.589]],
+        "microsoft-officemac": [[0.343,0.442,0.657,0.534],[0.105,0.383,0.895,0.671]],
+        "sinch": [[0.42,0.451,0.58,0.549],[0.27,0.362,0.732,0.638]],
+        "propel": [[0.377,0.407,0.62,0.599],[0.213,0.32,0.787,0.766]],
+        "garnish": [[0.398,0.407,0.602,0.561],[0.272,0.288,0.728,0.712]],
+        "malaysia-airlines": [[0.437,0.412,0.565,0.588],[0.243,0.184,0.757,0.843]],
+        "nicen-easy": [[0.412,0.418,0.588,0.608],[0.253,0.205,0.747,0.804]],
+        "ito-en": [[0.448,0.347,0.563,0.653],[0.395,0.196,0.603,0.804]],
+        "winshape-foundation": [[0.367,0.365,0.633,0.614],[0.237,0.181,0.802,0.751]],
+        "redfusion": [[0.433,0.383,0.567,0.617],[0.33,0.039,0.665,0.84]],
+        "bionaire": [[0.31,0.457,0.653,0.543],[0.132,0.415,0.817,0.588]],
+        "natures-promise": [[0.317,0.43,0.683,0.57],[0.165,0.371,0.835,0.629]],
+        "dewars": [[0.377,0.433,0.625,0.567],[0.193,0.353,0.807,0.68]],
+        "delta": [[0.38,0.457,0.62,0.543],[0.207,0.395,0.793,0.605]],
+        "eos": [[0.402,0.445,0.588,0.555],[0.232,0.35,0.742,0.65]],
+        "japan-airlines": [[0.383,0.436,0.617,0.564],[0.208,0.344,0.792,0.656]]
+      };
+
+      // The geometry of an image rendered with object-fit: cover,
+      // centred, inside a rect of the given size: the rendered size
+      // and its offset from the rect's origin (negative where the
+      // image is cropped). Matches how the tile covers render.
+      function coverGeom(rectW, rectH, natW, natH) {
+        var s = Math.max(rectW / natW, rectH / natH);
+        var w = natW * s, h = natH * s;
+        return { left: (rectW - w) / 2, top: (rectH - h) / 2, width: w, height: h };
+      }
+
+      // A logo-box in viewport coordinates, given the box's
+      // fractions and the geometry the image is rendered with at
+      // origin (originX, originY).
+      function logoBoxAt(box, geom, originX, originY) {
+        return {
+          x: originX + geom.left + box[0] * geom.width,
+          y: originY + geom.top + box[1] * geom.height,
+          width: (box[2] - box[0]) * geom.width,
+          height: (box[3] - box[1]) * geom.height
+        };
+      }
+
+      // The inner-image geometry (relative to the flyer window's
+      // origin at its destination) that puts the source image's logo
+      // box exactly onto targetLogo (in destination-rect coords):
+      // one uniform scale chosen from the logo widths, so the logo
+      // is never stretched, positioned by the logo's top-left.
+      function geomForLogoTarget(srcBox, srcNatW, srcNatH, destRect, targetLogo) {
+        var scale = targetLogo.width / ((srcBox[2] - srcBox[0]) * srcNatW);
+        if (!isFinite(scale) || scale <= 0) return null;
+        var w = srcNatW * scale, h = srcNatH * scale;
+        return {
+          left: targetLogo.x - destRect.left - srcBox[0] * w,
+          top: targetLogo.y - destRect.top - srcBox[1] * h,
+          width: w,
+          height: h
+        };
+      }
+
+      // A logo-matching flyer: a clipping window at rect holding the
+      // image on its own geometry (innerGeom, relative to the
+      // window), instead of the plain flyer's cover-filled img.
+      function makeLogoFlyer(src, rect, innerGeom) {
+        var flyer = document.createElement("div");
+        flyer.className = "shared-flyer shared-flyer--logo";
+        flyer.setAttribute("aria-hidden", "true");
+        flyer.style.left = rect.left + "px";
+        flyer.style.top = rect.top + "px";
+        flyer.style.width = rect.width + "px";
+        flyer.style.height = rect.height + "px";
+        var img = document.createElement("img");
+        img.alt = "";
+        img.src = src;
+        img.style.left = innerGeom.left + "px";
+        img.style.top = innerGeom.top + "px";
+        img.style.width = innerGeom.width + "px";
+        img.style.height = innerGeom.height + "px";
+        flyer.appendChild(img);
+        document.body.appendChild(flyer);
+        return { flyer: flyer, img: img };
+      }
+
+      // Animate the flyer from one viewport box to the other, keep the
+      // real counterpart hidden underneath, then crossfade the flyer
+      // out over it where it lands. On a logo-matched flight the
+      // flyer's inner image runs the same timing on its own geometry
+      // (inner = { el, from, to }), carrying the logo from its box
+      // at the start to its box at the destination.
+      function startFlight(flyer, fromRect, toRect, counterpart, inner) {
+        counterpart.classList.add("awaiting-flyer");
+        sharedFlight = { flyer: flyer, counterpart: counterpart, innerEl: inner ? inner.el : null };
+        var anim;
+        try {
+          anim = flyer.animate([
+            { left: fromRect.left + "px", top: fromRect.top + "px", width: fromRect.width + "px", height: fromRect.height + "px" },
+            { left: toRect.left + "px", top: toRect.top + "px", width: toRect.width + "px", height: toRect.height + "px" }
+          ], { duration: 580, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "forwards" });
+          if (inner) {
+            inner.el.animate([
+              { left: inner.from.left + "px", top: inner.from.top + "px", width: inner.from.width + "px", height: inner.from.height + "px" },
+              { left: inner.to.left + "px", top: inner.to.top + "px", width: inner.to.width + "px", height: inner.to.height + "px" }
+            ], { duration: 580, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "forwards" });
+          }
+        } catch (err) {
+          cancelSharedFlight();
+          return;
+        }
+        var landed = false;
+        function land() {
+          if (landed) return;
+          landed = true;
+          counterpart.classList.remove("awaiting-flyer");
+          try {
+            var fade = flyer.animate(
+              [{ opacity: 1 }, { opacity: 0 }],
+              { duration: 150, easing: "ease-out", fill: "forwards" }
+            );
+            fade.onfinish = function () { cancelSharedFlight(); };
+            fade.oncancel = function () { cancelSharedFlight(); };
+          } catch (err) {
+            cancelSharedFlight();
+            return;
+          }
+          // Belt and braces: never leave the flyer stranded on top.
+          setTimeout(function () {
+            if (sharedFlight && sharedFlight.flyer === flyer) cancelSharedFlight();
+          }, 300);
+        }
+        anim.onfinish = land;
+        anim.oncancel = function () {
+          landed = true;
+          counterpart.classList.remove("awaiting-flyer");
+          cancelSharedFlight();
+        };
+        // If the animation stalls (tab throttling, etc.), land anyway.
+        setTimeout(land, 780);
+      }
+
+      function openProjectShared(slug, tileEl) {
+        if (prefersReducedMotion() || !tileEl || typeof tileEl.animate !== "function") {
+          openProject(slug);
+          return;
+        }
+        var found = null;
+        PROJECTS.forEach(function (p) { if (p[3] === slug && !p[2]) found = p; });
+        var tileImg = tileEl.querySelector("img");
+        if (!found || !tileImg) { openProject(slug); return; }
+        cancelSharedFlight();
+        var sourceRect = tileEl.getBoundingClientRect();
+        if (!sourceRect.width || !sourceRect.height) { openProject(slug); return; }
+        // Logo-matched flight when this project has measured logo
+        // boxes and the cover's natural size is known: the flyer is
+        // the clipping window with the cover on its cover geometry,
+        // exactly as the tile renders it, and begin() below gives
+        // the inner image its landing geometry. Otherwise the plain
+        // flyer, as before.
+        var boxes = LOGO_BOXES[slug];
+        var tileNatW = tileImg.naturalWidth, tileNatH = tileImg.naturalHeight;
+        var logoFlight = null;
+        var flyer;
+        if (boxes && tileNatW && tileNatH) {
+          var startGeom = coverGeom(sourceRect.width, sourceRect.height, tileNatW, tileNatH);
+          var made = makeLogoFlyer(tileImg.src, sourceRect, startGeom);
+          flyer = made.flyer;
+          logoFlight = { img: made.img, from: startGeom, boxes: boxes };
+        } else {
+          flyer = makeFlyer(tileImg.src, sourceRect);
+        }
+        sharedFlight = { flyer: flyer, counterpart: null, innerEl: logoFlight ? logoFlight.img : null };
+
+        // The hero's box is only measurable once the hero image has
+        // loaded (its height comes from the image's natural aspect),
+        // so preload it before switching views; the project view then
+        // appears with the hero already sized and the flight can
+        // start immediately. A slow preload proceeds anyway after a
+        // short wait and degrades to the plain switch if the hero
+        // still has no box by then.
+        var proceeded = false;
+        function proceed() {
+          if (proceeded) return;
+          proceeded = true;
+          // Tall-board heroes (IMAX: 1500x3000, the only one) skip
+          // the flight outright when the preload already knows the
+          // hero's aspect — no flyer flash over the tile before the
+          // plain switch. The destRect check in begin() below is
+          // the backstop when the preload hasn't finished in time.
+          if (preload.naturalWidth && preload.naturalHeight > preload.naturalWidth * 1.2) {
+            cancelSharedFlight();
+            openProject(slug);
+            return;
+          }
+          if (!renderProject(slug)) { cancelSharedFlight(); return; }
+          lastProjectSlug = slug;
+          show("project");
+          rememberHash("#project/" + slug);
+          var heroEl = document.querySelector("#proj-shots img");
+          if (!heroEl) { cancelSharedFlight(); return; }
+          var began = false;
+          function begin() {
+            if (began) return;
+            began = true;
+            var destRect = heroEl.getBoundingClientRect();
+            if (!destRect.width || !destRect.height) { cancelSharedFlight(); return; }
+            // A hero taller than the viewport has no on-screen box
+            // to land on: the flyer would balloon far past the fold
+            // and crossfade somewhere the visitor can't see. IMAX is
+            // the one such project — its hero is a 1500x3000 concept
+            // board that renders about twice the viewport height —
+            // so it (and anything like it) keeps the plain switch:
+            // the project is already shown, just drop the flyer.
+            if (destRect.height > window.innerHeight) { cancelSharedFlight(); return; }
+            if (logoFlight && heroEl.naturalWidth && heroEl.naturalHeight) {
+              // Land the tile logo on the hero's logo: the target is
+              // the hero box's fractions of the hero's on-screen box,
+              // and the inner image's landing geometry follows from
+              // it. If the geometry can't be computed, swap the logo
+              // flyer for the plain one and fly that instead.
+              var hb = logoFlight.boxes[1];
+              var heroLogo = {
+                x: destRect.left + hb[0] * destRect.width,
+                y: destRect.top + hb[1] * destRect.height,
+                width: (hb[2] - hb[0]) * destRect.width,
+                height: (hb[3] - hb[1]) * destRect.height
+              };
+              var endGeom = geomForLogoTarget(logoFlight.boxes[0], tileNatW, tileNatH, destRect, heroLogo);
+              if (endGeom) {
+                startFlight(flyer, sourceRect, destRect, heroEl,
+                  { el: logoFlight.img, from: logoFlight.from, to: endGeom });
+                return;
+              }
+              cancelSharedFlight();
+              flyer = makeFlyer(tileImg.src, sourceRect);
+            }
+            startFlight(flyer, sourceRect, destRect, heroEl);
+          }
+          // Start the flight only once the hero's box is final:
+          // the image loaded (its height comes from the loaded
+          // aspect) and layout settled over two frames, with the
+          // webfont in — on phones the side column stacks above the
+          // hero, so a late font swap moves the hero's top. The old
+          // code measured on a 900ms timer instead: on a first tap,
+          // with the hero still fetching, the flight aimed at a box
+          // that was still growing and landed off; on a second tap
+          // the hero was cached, sized at once, and the same flight
+          // landed aligned. If the hero takes too long, drop the
+          // flyer and keep the plain switch rather than fly wrong.
+          var readyFired = false;
+          function ready() {
+            if (readyFired) return;
+            readyFired = true;
+            var go = function () {
+              requestAnimationFrame(function () { requestAnimationFrame(begin); });
+            };
+            if (document.fonts && document.fonts.ready) {
+              document.fonts.ready.then(go);
+              setTimeout(go, 400);
+            } else {
+              go();
+            }
+          }
+          if (heroEl.complete && heroEl.naturalWidth) {
+            ready();
+          } else {
+            heroEl.addEventListener("load", ready);
+            heroEl.addEventListener("error", function () { cancelSharedFlight(); });
+            setTimeout(function () { if (!began) cancelSharedFlight(); }, 1600);
+          }
+        }
+        var preload = new Image();
+        preload.onload = proceed;
+        preload.onerror = proceed;
+        preload.src = heroSrcFor(found);
+        if (preload.complete) proceed();
+        setTimeout(proceed, 650);
+      }
+
+      // Reverse flight for "Back to all work": the hero shrinks back
+      // into its tile. Only attempted when the hero is on screen now
+      // and the tile is on screen in the grid's resting (top-scrolled)
+      // position; otherwise the plain switch happens, untouched.
+      function backToWorkShared() {
+        if (prefersReducedMotion() || sharedFlight || !lastProjectSlug) {
+          show("work");
+          rememberHash("#work");
+          return;
+        }
+        var heroEl = document.querySelector("#proj-shots img");
+        var tileEl = document.querySelector('.tile[data-slug="' + lastProjectSlug + '"]');
+        if (!heroEl || !tileEl || typeof tileEl.animate !== "function") {
+          show("work");
+          rememberHash("#work");
+          return;
+        }
+        var heroRect = heroEl.getBoundingClientRect();
+        if (!heroRect.width || !heroRect.height ||
+            heroRect.bottom <= 0 || heroRect.top >= window.innerHeight) {
+          show("work");
+          rememberHash("#work");
+          return;
+        }
+        // Same tall-hero rule as the forward flight: a hero taller
+        // than the viewport (IMAX's concept board) has no on-screen
+        // box to lift off from, so it returns with the plain switch.
+        if (heroRect.height > window.innerHeight) {
+          show("work");
+          rememberHash("#work");
+          return;
+        }
+        // Logo-matched return when this project has measured logo
+        // boxes and both images' natural sizes are known: the flyer
+        // window holds the hero image filling it (as the hero
+        // renders), and its landing geometry puts the hero's logo
+        // exactly onto the tile logo's box in the tile's cover
+        // rendering. Otherwise the plain flyer, as before.
+        var boxes = LOGO_BOXES[lastProjectSlug];
+        var tileImg = tileEl.querySelector("img");
+        var logoMode = !!(boxes && tileImg && tileImg.naturalWidth && tileImg.naturalHeight &&
+          heroEl.naturalWidth && heroEl.naturalHeight);
+        var flyer, logoImg = null, heroGeom = null;
+        if (logoMode) {
+          heroGeom = { left: 0, top: 0, width: heroRect.width, height: heroRect.height };
+          var made = makeLogoFlyer(heroEl.src, heroRect, heroGeom);
+          flyer = made.flyer;
+          logoImg = made.img;
+        } else {
+          flyer = makeFlyer(heroEl.src, heroRect);
+        }
+        show("work");
+        rememberHash("#work");
+        var tileRect = tileEl.getBoundingClientRect();
+        if (!tileImg || !tileRect.width || !tileRect.height ||
+            tileRect.bottom <= 0 || tileRect.top >= window.innerHeight) {
+          if (flyer.parentNode) flyer.parentNode.removeChild(flyer);
+          return;
+        }
+        if (logoMode) {
+          var tileGeom = coverGeom(tileRect.width, tileRect.height, tileImg.naturalWidth, tileImg.naturalHeight);
+          var tileLogo = logoBoxAt(boxes[0], tileGeom, tileRect.left, tileRect.top);
+          var endGeom = geomForLogoTarget(boxes[1], heroEl.naturalWidth, heroEl.naturalHeight, tileRect, tileLogo);
+          if (endGeom) {
+            startFlight(flyer, heroRect, tileRect, tileImg,
+              { el: logoImg, from: heroGeom, to: endGeom });
+            return;
+          }
+          if (flyer.parentNode) flyer.parentNode.removeChild(flyer);
+          flyer = makeFlyer(heroEl.src, heroRect);
+        }
+        startFlight(flyer, heroRect, tileRect, tileImg);
+      }
+      var buttons = Array.prototype.slice.call(document.querySelectorAll("nav.main-nav button"));
+      function show(view) {
+        ["work", "about", "contact", "project"].forEach(function (v) {
+          document.getElementById("view-" + v).hidden = v !== view;
+        });
+        var navView = view === "project" ? "work" : view;
+        buttons.forEach(function (b) {
+          if (b.getAttribute("data-view") === navView) b.setAttribute("aria-current", "page");
+          else b.removeAttribute("aria-current");
+        });
+        document.body.classList.toggle("on-project", view === "project");
+        if (view !== "project") document.title = "Kenny Chui — Design + Creative Direction";
+        window.scrollTo(0, 0);
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () {
+          var v = b.getAttribute("data-view");
+          // Leaving a project for Work via the nav runs the hero's
+          // reverse shared-element flight back into its tile, the
+          // same as the "Back to all work" links below.
+          if (v === "work" && document.body.classList.contains("on-project")) {
+            backToWorkShared();
+            return;
+          }
+          // Switch the view first, unconditionally; the fragment update
+          // afterwards is guarded and can never veto the click (the old
+          // order — pushState, then show — died here whenever the
+          // embedded frame refused the history write).
+          show(v);
+          rememberHash("#" + v);
+        });
+      });
+      // Project footer (Previous / Next) and both "back to all work"
+      // links get the same direct treatment as the tiles: they follow
+      // their own href on click via the router instead of depending on
+      // a fragment navigation reaching the hashchange listener.
+      [["proj-prev"], ["proj-next"]].forEach(function (pair) {
+        var el = document.getElementById(pair[0]);
+        if (!el) return;
+        el.addEventListener("click", function (e) {
+          var href = el.getAttribute("href");
+          if (!href || href.indexOf("#project/") !== 0) return;
+          e.preventDefault();
+          openProject(href.slice(9));
+        });
+      });
+      Array.prototype.slice.call(document.querySelectorAll('a[href="#work"]')).forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          // Back to the grid flies the hero back into its tile when
+          // it can (see backToWorkShared); it falls back to the plain
+          // switch on its own whenever the flight isn't possible.
+          backToWorkShared();
+        });
+      });
+      function fromHash() {
+        var h = readHash();
+        if (h.indexOf("project/") === 0 && renderProject(h.slice(8))) {
+          lastProjectSlug = h.slice(8);
+          show("project");
+          return;
+        }
+        show(h === "about" || h === "contact" ? h : "work");
+      }
+      window.addEventListener("hashchange", fromHash);
+      fromHash();
+
+      // Hide the floating "All work" pill while the bottom project nav is
+      // on screen, so the pill never covers a Previous / Next project name.
+      (function () {
+        var pill = document.querySelector(".mobile-back");
+        var nav = document.querySelector(".proj-nav");
+        if (!pill || !nav || !("IntersectionObserver" in window)) return;
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            pill.classList.toggle("is-hidden", entry.isIntersecting);
+          });
+        }, { threshold: 0.05 });
+        observer.observe(nav);
+      })();
+
+      // Contact form: a static page can't send mail itself, so compose the
+      // message in the visitor's own mail app, addressed like the original.
+      document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("cf-name").value.trim();
+        var email = document.getElementById("cf-email").value.trim();
+        var msg = document.getElementById("cf-message").value.trim();
+        var subject = encodeURIComponent("Message from " + name);
+        var body = encodeURIComponent(msg + "\n\n— " + name + " (" + email + ")");
+        window.location.href = "mailto:kapachui@gmail.com?subject=" + subject + "&body=" + body;
+      });
+    </script>
+  </body>
+</html>
