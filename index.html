@@ -782,6 +782,109 @@
         margin: 0 auto 20px;
       }
       .project .shots img:last-child { margin-bottom: 0; }
+
+      /* ---------- image protection + click-to-zoom ---------- */
+      /* Copy protection for the work: no image on the site can be
+         dragged out, selected, or long-pressed into a save sheet.
+         The script adds the matching behaviour — the right-click
+         menu is suppressed over images and the tiles / frames that
+         hold them, and every <img> is stamped draggable="false"
+         (including ones the script creates later, like the
+         shared-element flyer). Navigation, links and buttons are
+         untouched: only image drag / selection / callout go away. */
+      img {
+        -webkit-user-drag: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
+      /* Animation slots sit over a slide but carry no interaction
+         of their own; letting clicks fall through them means the
+         slide image underneath can still be tapped to zoom. */
+      .project .shots .anim-slot { pointer-events: none; }
+      /* A shot the lightbox can enlarge (see wireShotZoom in the
+         script: only images with enough resolution to stay sharp
+         when enlarged get this) advertises it with the zoom
+         cursor; the global :focus-visible outline marks it for
+         keyboard visitors, who open it with Enter. */
+      .project .shots img.is-zoomable { cursor: zoom-in; }
+      /* Lightbox: a full-screen viewer over everything (header
+         and footer included). The image rests fitted to the
+         stage; zooming scales it — never past its natural size,
+         so it cannot go blurry — and a drag pans the enlarged
+         view. Its own image keeps the protection above. */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: flex;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        animation: view-in 300ms ease-in-out;
+      }
+      .lightbox[hidden] { display: none; }
+      body.lb-open { overflow: hidden; }
+      .lb-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: calc(14px + env(safe-area-inset-top, 0px)) 20px 10px;
+      }
+      .lb-caption {
+        margin: 0;
+        font-size: 13.5px;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .lb-tools { display: flex; gap: 8px; flex: none; }
+      .lb-tools button {
+        appearance: none;
+        min-width: 38px; height: 38px;
+        padding: 0 10px;
+        border: 1px solid var(--field-line);
+        border-radius: 999px;
+        background: var(--field);
+        color: var(--ink);
+        font: inherit;
+        font-size: 16px;
+        line-height: 1;
+        cursor: pointer;
+        transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+      }
+      .lb-tools button:hover { background: var(--accent); color: #000; }
+      .lb-tools button:disabled { opacity: 0.35; cursor: default; }
+      .lb-tools button:disabled:hover { background: var(--field); color: var(--ink); }
+      .lb-tools .lb-fit { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+      .lb-stage {
+        position: relative;
+        flex: 1 1 auto;
+        overflow: hidden;
+        touch-action: none;
+      }
+      .lb-stage img {
+        position: absolute;
+        left: 50%; top: 50%;
+        display: block;
+        max-width: none;
+        height: auto;
+        cursor: zoom-in;
+        will-change: transform;
+      }
+      .lb-hint {
+        margin: 0;
+        padding: 10px 20px calc(14px + env(safe-area-inset-bottom, 0px));
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.03em;
+        color: var(--faint);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .lightbox { animation: none; }
+      }
       /* Animated slide stage: on the Google Nest slides that embed
          GIFs in the deck, the flat slide image is the stage and the
          real animations (SLIDE_ANIMS in the script, converted from
@@ -2226,6 +2329,27 @@
       </ul>
     </footer>
 
+    <!-- Lightbox: click-to-zoom viewer for the project shots that
+         carry enough resolution to enlarge sharply (see
+         wireShotZoom in the script). Hidden until a zoomable shot
+         is tapped; its image keeps the site's drag / right-click
+         protection while it is open. -->
+    <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+      <div class="lb-bar">
+        <p class="lb-caption" id="lb-caption"></p>
+        <div class="lb-tools">
+          <button type="button" id="lb-zoom-out" aria-label="Zoom out">&minus;</button>
+          <button type="button" id="lb-zoom-in" aria-label="Zoom in">+</button>
+          <button type="button" class="lb-fit" id="lb-reset">Fit</button>
+          <button type="button" id="lb-close" aria-label="Close viewer">&times;</button>
+        </div>
+      </div>
+      <div class="lb-stage" id="lb-stage">
+        <img id="lb-img" alt="" draggable="false" />
+      </div>
+      <p class="lb-hint">Double-click or scroll to zoom &middot; drag to pan &middot; Esc to close</p>
+    </div>
+
     <script>
       // Project tiles, in the exact order of helloox.com.
       // No project is locked: Samsung was the last gated one, and
@@ -3491,6 +3615,7 @@
           }
           shots.appendChild(buildShot(found[3], pair[0], pair[1] || found[4], i > 0));
         });
+        wireShotZoom(shots);
         // Previous / Next walk the unlocked projects in grid order.
         var open = PROJECTS.filter(function (p) { return !p[2]; });
         var idx = open.indexOf(found);
@@ -4358,6 +4483,255 @@
         var body = encodeURIComponent(msg + "\n\n— " + name + " (" + email + ")");
         window.location.href = "mailto:kapachui@gmail.com?subject=" + subject + "&body=" + body;
       });
+
+      // --- Copy protection -------------------------------------
+      // Casual-save deterrents for the work, scoped to images so
+      // the rest of the site behaves exactly as before: the
+      // right-click menu is suppressed only when it opens over an
+      // image or over a tile / frame / slide that holds one (the
+      // hover overlays sit above the covers, so the menu has to be
+      // caught on the container too), and image dragging is
+      // cancelled wherever it starts. The stylesheet covers the
+      // rest — no drag ghost, no selection, no iOS long-press
+      // callout on any <img>. Links, buttons and text elsewhere
+      // keep their normal menus and behaviour.
+      document.addEventListener("contextmenu", function (e) {
+        var t = e.target;
+        if (!t || !t.closest) return;
+        if (t.closest("img, .tile, .preview .p-frame, .slide-stage, #lightbox")) e.preventDefault();
+      });
+      document.addEventListener("dragstart", function (e) {
+        if (e.target && e.target.tagName === "IMG") e.preventDefault();
+      });
+      // Belt and braces for drag: stamp draggable="false" on every
+      // image, including ones the script builds later (tile covers,
+      // shots, the shared-element flyer), which the observer catches
+      // as they land.
+      function stampNoDrag(img) { img.draggable = false; }
+      Array.prototype.forEach.call(document.querySelectorAll("img"), stampNoDrag);
+      if ("MutationObserver" in window && document.body) {
+        new MutationObserver(function (muts) {
+          muts.forEach(function (m) {
+            Array.prototype.forEach.call(m.addedNodes, function (n) {
+              if (n.nodeType !== 1) return;
+              if (n.tagName === "IMG") stampNoDrag(n);
+              Array.prototype.forEach.call(n.querySelectorAll("img"), stampNoDrag);
+            });
+          });
+        }).observe(document.body, { childList: true, subtree: true });
+      }
+
+      // --- Click-to-zoom lightbox ------------------------------
+      // Zoom is earned per image, not switched on site-wide: a
+      // project shot becomes zoomable only when its file carries
+      // enough resolution that enlarging it stays sharp — at
+      // least 1200px wide and 400px tall, and at least 15% wider
+      // than the size it is displayed at on the page. That takes
+      // in the 1500–1600px slides and boards (shown at 920px at
+      // most) and leaves out everything that would only blur: the
+      // thin divider strips, the 750px Comcast type cards, the
+      // 792px Office 2011 boards and the 1024px GE screens. The
+      // check runs on each shot's own loaded size (see
+      // wireShotZoom, called from renderProject), so a shot that
+      // fails it simply stays a plain image — no cursor, no
+      // button, nothing to tap. Inside the viewer the image is
+      // never shown wider than its natural size, so the zoom
+      // cannot upscale its way into softness there either.
+      function wireShotZoom(shotsEl) {
+        // Local on purpose: renderProject can run (via a deep
+        // link's fromHash) before the statements below execute,
+        // so the thresholds cannot live in later var assignments.
+        var ZOOM_MIN_W = 1200;
+        var ZOOM_MIN_H = 400;
+        if (!shotsEl) return;
+        var primaries = [];
+        Array.prototype.forEach.call(shotsEl.children, function (c) {
+          if (c.tagName === "IMG") primaries.push(c);
+        });
+        Array.prototype.forEach.call(shotsEl.querySelectorAll(".slide-stage > img"), function (im) {
+          primaries.push(im);
+        });
+        primaries.forEach(function (im) {
+          if (im.getAttribute("data-zoom-check")) return;
+          im.setAttribute("data-zoom-check", "1");
+          function assess() {
+            var nw = im.naturalWidth, nh = im.naturalHeight;
+            if (!nw || !nh) return;
+            var shown = im.getBoundingClientRect().width || im.clientWidth || 0;
+            var headroom = shown > 0 ? nw >= shown * 1.15 : true;
+            if (nw < ZOOM_MIN_W || nh < ZOOM_MIN_H || !headroom) return;
+            if (im.classList.contains("is-zoomable")) return;
+            im.classList.add("is-zoomable");
+            im.setAttribute("tabindex", "0");
+            im.setAttribute("role", "button");
+            im.setAttribute("aria-label", "Enlarge image: " + (im.alt || "project image"));
+            im.title = "Click to enlarge";
+            im.addEventListener("click", function () { openZoomViewer(im); });
+            im.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openZoomViewer(im);
+              }
+            });
+          }
+          if (im.complete && im.naturalWidth) assess();
+          else im.addEventListener("load", assess);
+        });
+      }
+
+      var lbEl = document.getElementById("lightbox");
+      var lbImg = document.getElementById("lb-img");
+      var lbStage = document.getElementById("lb-stage");
+      var lbCaption = document.getElementById("lb-caption");
+      var lbZoomInBtn = document.getElementById("lb-zoom-in");
+      var lbZoomOutBtn = document.getElementById("lb-zoom-out");
+      var lbResetBtn = document.getElementById("lb-reset");
+      var lbCloseBtn = document.getElementById("lb-close");
+      var lbScale = 1, lbTX = 0, lbTY = 0, lbFitW = 0, lbFitH = 0, lbMaxScale = 1;
+      var lbLastFocus = null;
+
+      function lbApply() {
+        lbImg.style.transform = "translate(-50%, -50%) translate(" + lbTX + "px, " + lbTY + "px) scale(" + lbScale + ")";
+        lbImg.style.cursor = lbScale > 1 ? "grab" : "zoom-in";
+        lbZoomInBtn.disabled = lbScale >= lbMaxScale - 0.001;
+        lbZoomOutBtn.disabled = lbScale <= 1.001;
+        lbResetBtn.disabled = lbScale <= 1.001 && lbTX === 0 && lbTY === 0;
+      }
+      function lbClampPan() {
+        var maxX = Math.max(0, (lbFitW * lbScale - lbStage.clientWidth) / 2) + 48;
+        var maxY = Math.max(0, (lbFitH * lbScale - lbStage.clientHeight) / 2) + 48;
+        lbTX = Math.max(-maxX, Math.min(maxX, lbTX));
+        lbTY = Math.max(-maxY, Math.min(maxY, lbTY));
+      }
+      function lbSetScale(next) {
+        next = Math.max(1, Math.min(lbMaxScale, next));
+        var f = lbScale ? next / lbScale : 1;
+        lbTX *= f; lbTY *= f;
+        lbScale = next;
+        if (lbScale === 1) { lbTX = 0; lbTY = 0; }
+        lbClampPan();
+        lbApply();
+      }
+      function lbFit() {
+        var nw = lbImg.naturalWidth, nh = lbImg.naturalHeight;
+        if (!nw || !nh || !lbStage.clientWidth) return;
+        lbFitW = Math.min(nw, lbStage.clientWidth * 0.96, (lbStage.clientHeight * 0.9) * nw / nh);
+        lbFitH = lbFitW * nh / nw;
+        lbImg.style.width = lbFitW + "px";
+        // The sharpness guarantee: the enlarged view tops out at
+        // the file's own pixel size, never an upscale past it.
+        lbMaxScale = Math.max(1, nw / lbFitW);
+        lbScale = 1; lbTX = 0; lbTY = 0;
+        lbApply();
+      }
+      function openZoomViewer(sourceImg) {
+        if (!lbEl || !sourceImg) return;
+        lbLastFocus = document.activeElement;
+        lbCaption.textContent = sourceImg.alt || "";
+        lbImg.alt = sourceImg.alt || "";
+        lbEl.hidden = false;
+        document.body.classList.add("lb-open");
+        var src = sourceImg.currentSrc || sourceImg.src;
+        if (lbImg.getAttribute("src") !== src) {
+          lbImg.removeAttribute("src");
+          lbImg.src = src;
+        }
+        if (lbImg.complete && lbImg.naturalWidth) lbFit();
+        lbCloseBtn.focus();
+      }
+      function closeZoomViewer() {
+        if (!lbEl || lbEl.hidden) return;
+        lbEl.hidden = true;
+        document.body.classList.remove("lb-open");
+        lbScale = 1; lbTX = 0; lbTY = 0;
+        if (lbLastFocus && lbLastFocus.focus) lbLastFocus.focus();
+        lbLastFocus = null;
+      }
+      if (lbEl && lbImg && lbStage) {
+        lbImg.addEventListener("load", function () { if (!lbEl.hidden) lbFit(); });
+        lbCloseBtn.addEventListener("click", closeZoomViewer);
+        lbZoomInBtn.addEventListener("click", function () { lbSetScale(lbScale * 1.35); });
+        lbZoomOutBtn.addEventListener("click", function () { lbSetScale(lbScale / 1.35); });
+        lbResetBtn.addEventListener("click", function () { lbSetScale(1); });
+        lbImg.addEventListener("dblclick", function (e) {
+          e.preventDefault();
+          lbSetScale(lbScale > 1 ? 1 : Math.min(lbMaxScale, 2));
+        });
+        lbStage.addEventListener("wheel", function (e) {
+          if (lbEl.hidden) return;
+          e.preventDefault();
+          lbSetScale(lbScale * (e.deltaY < 0 ? 1.15 : 0.87));
+        }, { passive: false });
+        // Pan by dragging the enlarged image; two pointers pinch
+        // to zoom. A plain click on the dark stage around a fitted
+        // image closes the viewer, like tapping the backdrop.
+        var lbPointers = {};
+        var lbDragId = null, lbDragSX = 0, lbDragSY = 0, lbDragTX = 0, lbDragTY = 0, lbDragMoved = 0;
+        var lbPinchD = 0;
+        function lbPointerPos(e) { return { x: e.clientX, y: e.clientY }; }
+        lbStage.addEventListener("pointerdown", function (e) {
+          lbPointers[e.pointerId] = lbPointerPos(e);
+          var ids = Object.keys(lbPointers);
+          if (ids.length === 2) {
+            var a = lbPointers[ids[0]], b = lbPointers[ids[1]];
+            lbPinchD = Math.hypot(a.x - b.x, a.y - b.y);
+            lbDragId = null;
+          } else if (e.target === lbImg && lbScale > 1) {
+            lbDragId = e.pointerId;
+            lbDragSX = e.clientX; lbDragSY = e.clientY;
+            lbDragTX = lbTX; lbDragTY = lbTY; lbDragMoved = 0;
+            lbImg.style.cursor = "grabbing";
+            if (lbStage.setPointerCapture) { try { lbStage.setPointerCapture(e.pointerId); } catch (err) {} }
+          }
+        });
+        lbStage.addEventListener("pointermove", function (e) {
+          if (!lbPointers[e.pointerId]) return;
+          lbPointers[e.pointerId] = lbPointerPos(e);
+          var ids = Object.keys(lbPointers);
+          if (ids.length === 2 && lbPinchD > 0) {
+            var a = lbPointers[ids[0]], b = lbPointers[ids[1]];
+            var d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d > 0) { lbSetScale(lbScale * d / lbPinchD); lbPinchD = d; }
+          } else if (lbDragId === e.pointerId) {
+            var dx = e.clientX - lbDragSX, dy = e.clientY - lbDragSY;
+            lbDragMoved = Math.max(lbDragMoved, Math.abs(dx) + Math.abs(dy));
+            lbTX = lbDragTX + dx; lbTY = lbDragTY + dy;
+            lbClampPan();
+            lbApply();
+          }
+        });
+        function lbPointerEnd(e) {
+          var wasDrag = lbDragId === e.pointerId;
+          delete lbPointers[e.pointerId];
+          if (Object.keys(lbPointers).length < 2) lbPinchD = 0;
+          if (wasDrag) {
+            lbDragId = null;
+            lbApply();
+            // Swallow the click that follows a real drag, so
+            // panning never also triggers the stage close below.
+            if (lbDragMoved > 6) {
+              lbStage.addEventListener("click", function swallow(ev) {
+                ev.stopPropagation();
+                lbStage.removeEventListener("click", swallow, true);
+              }, true);
+            }
+          }
+        }
+        lbStage.addEventListener("pointerup", lbPointerEnd);
+        lbStage.addEventListener("pointercancel", lbPointerEnd);
+        lbStage.addEventListener("click", function (e) {
+          if (e.target === lbStage && lbScale <= 1) closeZoomViewer();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (lbEl.hidden) return;
+          if (e.key === "Escape") closeZoomViewer();
+          else if (e.key === "+" || e.key === "=") lbSetScale(lbScale * 1.35);
+          else if (e.key === "-") lbSetScale(lbScale / 1.35);
+          else if (e.key === "0") lbSetScale(1);
+        });
+        window.addEventListener("resize", function () { if (!lbEl.hidden) lbFit(); });
+        window.addEventListener("hashchange", closeZoomViewer);
+      }
     </script>
   </body>
 </html>
